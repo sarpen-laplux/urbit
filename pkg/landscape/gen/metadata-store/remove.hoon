@@ -12,7 +12,7 @@
 /-  metadata=metadata-store
 /+  resource
 :-  %say
-|=  $:  [now=@da eny=@uvJ =beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ =beak]
         [[group=term app=term rid=resource ~] ~]
     ==
 :-  %metadata-action

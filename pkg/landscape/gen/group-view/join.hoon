@@ -2,7 +2,7 @@
 ::
 /-  view=group-view
 :-  %say
-|=  $:  [now=@da eny=@uvJ =beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ =beak]
         [[him=ship name=term ~] ~]
     ==
 ::

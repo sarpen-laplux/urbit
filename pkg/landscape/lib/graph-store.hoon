@@ -601,7 +601,7 @@
     ++  gall-scry
       |=  [=care:clay dap=dude:gall]
       ^-  path
-      /(cat 3 %g care)/(scot %p our.bowl)/[dap]/(scot %da now.bowl)
+      /(cat 3 %g care)/(scot %p our.bowl)/[dap]/(en-cose da+now.bowl ud+tick.bowl)
     --
   ::
   ::  +two

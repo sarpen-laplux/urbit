@@ -10,14 +10,12 @@
   =/  ship
     (slaw %p i.t.u.pax)
   =/  ved
-    (slay i.t.t.t.u.pax)
+    (de-cose i.t.t.t.u.pax)
   =/  dat
     ?~  ved  now.bowl
-    =/  cas=(unit case)
-      ((soft case) p.u.ved)
-    ?~  cas  now.bowl
-    ?:  ?=(%da -.u.cas)
-      p.u.cas
+    =/  cas=case  (cose-to-case u.ved)
+    ?:  ?=(%da -.cas)
+      p.cas
     now.bowl
   ::  catch bad gall scries early
   ?:  ?&  =((end 3 i.u.pax) %g)

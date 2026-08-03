@@ -2,7 +2,7 @@
 ::
 /-  *graph-store
 :-  %say
-|=  $:  [now=@da eny=@uvJ =beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ =beak]
         [[[our=ship name=term] contents=(list content) ~] ~]
     ==
 =/  =post  *post

@@ -428,7 +428,7 @@
   ::
   ++  is-kid
     ?&  kids.whitelist.entry
-        =(our.bowl (sein:title our.bowl now.bowl who))
+        =(our.bowl (sein:title our.bowl now.bowl tick.bowl who))
     ==
   ::
   ++  in-group

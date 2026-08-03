@@ -135,7 +135,7 @@
       %glob-make
     =+  !<(dir=path vase)
     :_  this
-    =/  home=path  /(scot %p our.bowl)/home/(scot %da now.bowl)
+    =/  home=path  /(scot %p our.bowl)/home/(en-cose da+now.bowl ud+tick.bowl)
     =+  .^(paths=(list path) %ct (weld home dir))
     =+  .^(=js=tube:clay %cc (weld home /js/mime))
     =+  .^(=map=tube:clay %cc (weld home /map/mime))

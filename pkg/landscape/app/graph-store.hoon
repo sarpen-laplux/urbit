@@ -370,7 +370,7 @@
           ~|  "hash of post does not match calculated hash"
           ?>  =(hash u.hash.p)
           ~|  "signatures do not match the calculated hash"
-          ?>  (are-signatures-valid:sigs our.bowl signatures.p hash now.bowl)
+          ?>  (are-signatures-valid:sigs our.bowl signatures.p hash now.bowl tick.bowl)
           node
         ::  recurse children
         ::
@@ -526,7 +526,7 @@
           ~|  "signatures did not match public keys!"
           ?>  %:  are-signatures-valid:sigs
                 our.bowl  signatures
-                u.hash.p.post.node  now.bowl
+                u.hash.p.post.node  now.bowl  tick.bowl
               ==
           node(signatures.p.post (~(uni in signatures) signatures.p.post.node))
         ~|  "child graph does not exist to add signatures to!"
@@ -660,7 +660,7 @@
           %cf
           (scot %p our.bowl)
           q.byk.bowl
-          (scot %da now.bowl)
+          (en-cose da+now.bowl ud+tick.bowl)
           u.mark
           %graph-indexed-post
           ~

@@ -2,7 +2,7 @@
 /+  re=resource, graph=graph-store
 !:
 :-  %say
-|=  $:  [now=@da eny=@uvJ =beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ =beak]
         args=?(~ [shy=? ~])
         ~
     ==
@@ -122,7 +122,7 @@
 ::
 ++  scry
   |*  [=mold care=term app=term =path]
-  .^(mold (tac %g care) (scot %p our) app (scot %da now) path)
+  .^(mold (tac %g care) (scot %p our) app (en-cose da+now ud+tick) path)
 ::
 ++  tac  (cury cat 3)
 ::

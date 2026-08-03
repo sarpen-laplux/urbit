@@ -20,7 +20,7 @@
     %gx
     (scot %p our.bowl)
     %group-store
-    (scot %da now.bowl)
+    (en-cose da+now.bowl ud+tick.bowl)
     path
   ==
 ++  scry-tag
@@ -44,7 +44,7 @@
     %gy
     (scot %p our.bowl)
     %group-store
-    (scot %da now.bowl)
+    (en-cose da+now.bowl ud+tick.bowl)
     /groups
   ==
 ::

@@ -219,7 +219,7 @@
       [%x %runtime-lag ~]
     :^  ~  ~  %json
     !>  ^-  json
-    b+.^(? //(scot %p our.bowl)//(scot %da now.bowl)/zen/lag)
+    b+.^(? //(scot %p our.bowl)//(en-cose da+now.bowl ud+tick.bowl)/zen/lag)
   ==
 ::
 ++  on-arvo

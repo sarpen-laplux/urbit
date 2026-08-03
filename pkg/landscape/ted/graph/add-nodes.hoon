@@ -91,7 +91,7 @@
   ::
       signatures.p.post
     %-  ~(gas in *signatures:store)
-    [(sign:sig our.bowl now.bowl hash)]~
+    [(sign:sig our.bowl now.bowl tick.bowl hash)]~
   ::
       children
     ?:  ?=(%empty -.children.node)

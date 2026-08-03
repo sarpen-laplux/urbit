@@ -226,7 +226,7 @@
         =/  scry-start=path
           :*  (scot %p our.bowl)
               q.byk.bowl
-              (scot %da now.bowl)
+              (en-cose da+now.bowl ud+tick.bowl)
               path.content.u.content
           ==
         =/  scry-path=path
@@ -348,7 +348,7 @@
       [%x %clay %base %hash ~]
     ::  TODO: have web client ask kiln directly
     =/  ego  (scot %p our.bowl)
-    =/  wen  (scot %da now.bowl)
+    =/  wen  (en-cose da+now.bowl ud+tick.bowl)
     ``hash+!>(.^(@ %gx /[ego]/hood/[wen]/kiln/base-hash/noun))
   ::
       [%x %our ~]

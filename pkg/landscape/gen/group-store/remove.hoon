@@ -2,7 +2,7 @@
 ::
 /-  *group-store
 :-  %say
-|=  $:  [now=@da eny=@uvJ =beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ =beak]
         [[=ship =term ships=(list ship) ~] ~]
     ==
 :-  %group-action

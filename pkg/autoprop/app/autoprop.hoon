@@ -71,7 +71,7 @@
 +*  this  .
     def   ~(. (default-agent this %|) bowl)
     des   ~(. (default:shoe this command) bowl)
-    rev   rev:.^(vere %$ /(scot %p our.bowl)//(scot %da now.bowl)/zen/ver)
+    rev   rev:.^(vere %$ (en-bema [our.bowl %$ da+now.bowl ud+tick.bowl] /zen/ver))
 ::
 ++  on-init
   ^-  (quip card _this)
@@ -189,7 +189,7 @@
     |^  =*  base  base.task
         :+  %sag
           =/  ver=@ta
-            =+  .^(vere %$ /(scot %p our.bowl)//(scot %da now.bowl)/zen/ver)
+            =+  .^(vere %$ (en-bema [our.bowl %$ da+now.bowl ud+tick.bowl] /zen/ver))
             ?+  rev  (rap 3 (join '-' rev))
               [%vere @ ~]    (fall (slaw %ta i.t.rev) i.t.rev)
               [%vere @ @ ~]  (fall (slaw %ta i.t.t.rev) i.t.t.rev)
@@ -221,11 +221,11 @@
     ::
     ++  byk
       |=  d=desk
-      `beak`[our.bowl d da+now.bowl]
+      `beck`[our.bowl d da+now.bowl ud+tick.bowl]
     ::
     ++  bek
       |=  d=desk
-      `path`(en-beam (byk d) /)
+      `path`(en-bema (byk d) /)
     --
   ==
 ::

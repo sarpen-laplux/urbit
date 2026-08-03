@@ -44,7 +44,7 @@
       %gy
       (scot %p our.bowl)
       %metadata-store
-      (scot %da now.bowl)
+      (en-cose da+now.bowl ud+tick.bowl)
       /group-indices
     ==
   |=  =md-resource:store
@@ -66,7 +66,7 @@
   |=  group=resource
   ^-  associations:store
   .^  associations:store
-    %gx  (scot %p our.bowl)  %metadata-store  (scot %da now.bowl)
+    %gx  (scot %p our.bowl)  %metadata-store  (en-cose da+now.bowl ud+tick.bowl)
     %group  (snoc (en-path:resource group) %noun)
   ==
 ::
@@ -78,7 +78,7 @@
     %gy
     (scot %p our.bowl)
     %metadata-store
-    (scot %da now.bowl)
+    (en-cose da+now.bowl ud+tick.bowl)
     /group-indices
   ==
 ::
@@ -86,7 +86,7 @@
   |=  [app-name=term rid=resource]
   ^-  (unit association:store)
   .^  (unit association:store)
-    %gx  (scot %p our.bowl)  %metadata-store  (scot %da now.bowl)
+    %gx  (scot %p our.bowl)  %metadata-store  (en-cose da+now.bowl ud+tick.bowl)
     %metadata  app-name  (snoc (en-path:resource rid) %noun)
   ==
 ::

@@ -2,7 +2,7 @@
 ::
 /-  *s3
 :-  %say
-|=  $:  [now=@da eny=@uvJ =beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ =beak]
         [[access-key-id=@t ~] ~]
     ==
 :-  %s3-action

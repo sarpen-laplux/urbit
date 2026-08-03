@@ -1275,7 +1275,7 @@
     %gx
     (scot %p our.bowl)
     app
-    (scot %da now.bowl)
+    (en-cose da+now.bowl ud+tick.bowl)
     (snoc `^path`path %noun)
   ==
 --

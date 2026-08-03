@@ -7,19 +7,19 @@
 =>
 |%
 ++  commit
-  |=  [our=@p now=@da ships=(list @p)]
+  |=  [our=@p now=@da tick=@ud ships=(list @p)]
   ^-  (list aqua-event)
   %+  turn  ships
   |=  her=@p
   :+  %event  her
-  =/  paths  .^((list path) %ct /(scot %p our)/home/(scot %da now))
+  =/  paths  .^((list path) %ct /(scot %p our)/home/(en-cose da+now ud+tick))
   =/  mod=mode:clay
     %+  murn  paths
     |=  pat=path
     ^-  (unit [path (unit mime)])
     ?.  =((snag (dec (lent pat)) pat) %hoon)
       ~
-    =/  clay-pax=path  (weld /(scot %p our)/home/(scot %da now) pat)
+    =/  clay-pax=path  (weld /(scot %p our)/home/(en-cose da+now ud+tick) pat)
     =/  file  [/text/plain (as-octs:mimes:html .^(@ %cx clay-pax))]
     `[pat `file]
   :-  //sync/0v1n.2m9vh
@@ -42,7 +42,7 @@
 ;<  ~  bind:m  start-simple
 =/  ships=(list @p)  ~[~zod ~bus ~web]
 ;<  =bowl:spider  bind:m  get-bowl
-=/  commit-events  (commit our.bowl now.bowl ships)
+=/  commit-events  (commit our.bowl now.bowl tick.bowl ships)
 |-
 =*  fleet-loop  $
 ?~  fleets
@@ -54,7 +54,7 @@
 ;<  ~  bind:m  (sleep ~s0)
 ;<  =bowl:spider  bind:m  get-bowl
 =/  full-ships
-  .^((list @p) %gx /(scot %p our.bowl)/aqua/(scot %da now.bowl)/ships/noun)
+  .^((list @p) %gx /(scot %p our.bowl)/aqua/(en-cose da+now.bowl ud+tick.bowl)/ships/noun)
 ;<  ~  bind:m  (send-events (snap-fleet i.fleets full-ships))
 ;<  ~  bind:m  (sleep ~s0)
 ::

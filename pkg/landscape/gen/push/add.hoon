@@ -1,6 +1,6 @@
 /-  *push-hook
 :-  %say
-|=  $:  [now=@da eny=@uvJ =beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ =beak]
         [[=term ~] ~]
     ==
 :-  %push-hook-action

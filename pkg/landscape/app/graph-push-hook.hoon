@@ -289,7 +289,7 @@
 ++  scry
   |=  [care=@t desk=@t =path]
   %+  weld
-    /[care]/(scot %p our.bowl)/[desk]/(scot %da now.bowl)
+    /[care]/(scot %p our.bowl)/[desk]/(en-cose da+now.bowl ud+tick.bowl)
   path
 ::
 ++  perm-mark

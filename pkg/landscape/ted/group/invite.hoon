@@ -15,7 +15,7 @@
   ^-  bowl:gall
   :*  [our src %$]:bowl
       [~ ~]
-      [0 eny now byk]:bowl
+      [0 eny now tick byk]:bowl
   ==
 ::
 ++  invite-ships

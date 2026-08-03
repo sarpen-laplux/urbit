@@ -7,7 +7,7 @@
 ^-  form:m
 =+  !<(jim=@ arg)
 ;<  =bowl:spider  bind:m  get-bowl:strandio
-=/  home=path  /(scot %p our.bowl)/[q.byk.bowl]/(scot %da now.bowl)
+=/  home=path  /(scot %p our.bowl)/[q.byk.bowl]/(en-cose da+now.bowl ud+tick.bowl)
 =/  =path  /(cat 3 'backup-' (scot %da now.bowl))/noun
   ::  XX remove prints
 ;<  ~  bind:m  (poke-our:strandio %hood drum-put+!>([path jim]))

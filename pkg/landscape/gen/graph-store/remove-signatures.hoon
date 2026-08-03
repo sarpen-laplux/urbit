@@ -3,7 +3,7 @@
 ::
 /-  *graph-store
 :-  %say
-|=  $:  [now=@da eny=@uvJ =beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ =beak]
         [[[=resource =index] =signatures ~] ~]
     ==
 :-  %graph-update-3

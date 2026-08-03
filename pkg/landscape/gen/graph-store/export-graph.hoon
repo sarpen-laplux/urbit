@@ -1,12 +1,12 @@
 /+  graph-store
 ::
 :-  %say
-|=  $:  [now=@da eny=@uvJ bec=beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ bec=beak]
         [[=ship graph=term ~] ~]
     ==
 :-  %graph-update-3
 =/  our  (scot %p p.bec)
-=/  wen  (scot %da now)
+=/  wen  (en-cose da+now ud+tick)
 =/  who  (scot %p ship)
 ::
 .^  update:graph-store

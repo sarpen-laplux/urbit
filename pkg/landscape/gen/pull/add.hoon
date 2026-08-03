@@ -1,6 +1,6 @@
 /-  *pull-hook
 :-  %say
-|=  $:  [now=@da eny=@uvJ =beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ =beak]
         [[=ship =term ~] ~]
     ==
 :-  %pull-hook-action

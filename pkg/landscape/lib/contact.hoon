@@ -8,7 +8,7 @@
     %gx
     (scot %p our.bowl)
     %contact-store
-    (scot %da now.bowl)
+    (en-cose da+now.bowl ud+tick.bowl)
     (snoc `^path`path %noun)
   ==
 ::
@@ -47,7 +47,7 @@
     %gx
     (scot %p our.bowl)
     %contact-push-hook
-    (scot %da now.bowl)
+    (en-cose da+now.bowl ud+tick.bowl)
     /sharing/noun
   ==
 ::
@@ -64,7 +64,7 @@
     %gx
     (scot %p our.bowl)
     %contact-store
-    (scot %da now.bowl)
+    (en-cose da+now.bowl ud+tick.bowl)
     /is-public/noun
   ==
 ::

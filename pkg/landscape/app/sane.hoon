@@ -246,7 +246,7 @@
         %gy
         (scot %p our.bowl)
         %metadata-store
-        (scot %da now.bowl)
+        (en-cose da+now.bowl ud+tick.bowl)
         /app-indices
       ==
   =/  resources=(set [resource resource])
@@ -266,7 +266,7 @@
     (cat 3 %g i.path)
     (scot %p our.bowl)
     i.t.path
-    (scot %da now.bowl)
+    (en-cose da+now.bowl ud+tick.bowl)
     t.t.path
   ==
 --

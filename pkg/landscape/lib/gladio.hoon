@@ -65,7 +65,7 @@
   |=  [=dude:gall =path]
   %-  welp 
   :_  path
-  /gx/(scot %p our.bowl)/[dude]/(scot %da now.bowl)
+  /gx/(scot %p our.bowl)/[dude]/(en-cose da+now.bowl ud+tick.bowl)
 ++  groups
   ~+  .^([@ =^groups *] (scry %group-store /export/noun))
 ++  groups-raw
@@ -78,7 +78,7 @@
   ~+  .^([@ =associations:met ~] (scry %metadata-store /export/noun))
 ++  my-channels-associations
   =/  assoc
-    .^(associations:met %gx [(scot %p our.bowl) %metadata-store (scot %da now.bowl) %associations %noun ~])
+    .^(associations:met %gx [(scot %p our.bowl) %metadata-store (en-cose da+now.bowl ud+tick.bowl) %associations %noun ~])
   %-  ~(gas by *associations:met)
   %+  skim
       ~(tap by assoc)

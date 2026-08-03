@@ -1,6 +1,6 @@
 /-  *demo
 :-  %say
-|=  $:  [now=@da eny=@uvJ =beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ =beak]
         [[ver=@ud =term count=@ud ~] ~]
     ==
 :-  (cat 3 %demo-update- (scot %ud ver))

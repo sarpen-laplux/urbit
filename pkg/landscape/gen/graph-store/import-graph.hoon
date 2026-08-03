@@ -1,7 +1,7 @@
 /+  graph-store
 ::
 :-  %say
-|=  $:  [now=@da eny=@uvJ bec=beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ bec=beak]
         [[graph=term =path ~] ~]
     ==
 :-  %graph-update-3

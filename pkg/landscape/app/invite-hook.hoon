@@ -98,7 +98,7 @@
     .^  (unit invitatory)
         %gx
         %+  weld
-          /(scot %p our.bowl)/invite-store/(scot %da now.bowl)/invitatory
+          /(scot %p our.bowl)/invite-store/(en-cose da+now.bowl ud+tick.bowl)/invitatory
         /[term]/noun
     ==
   ::
@@ -107,7 +107,7 @@
     .^  (unit invite)
         %gx
         %+  weld
-          /(scot %p our.bowl)/invite-store/(scot %da now.bowl)/invite
+          /(scot %p our.bowl)/invite-store/(en-cose da+now.bowl ud+tick.bowl)/invite
         /[term]/(scot %uv uid)/noun
     ==
   --
