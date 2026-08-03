@@ -23,12 +23,12 @@
 ::  of the subscription we want to delete.
 ::
 ++  eyre-clean
-  |=  [our=ship now=@da]
+  |=  [our=ship now=@da tick=@ud]
   ^-   (list card:agent:gall)
   =/  m-gall  (gall-raw our)
-  =/  yokes   .^((map term yoke:m-gall) %gy /(scot %p our)//(scot %da now)/$)
+  =/  yokes   .^((map term yoke:m-gall) %gy (en-bema [our %$ da+now ud+tick] /$))
   =/  channel
-    .^(channel-state:eyre %e /(scot %p our)/channel-state/(scot %da now)/$)
+    .^(channel-state:eyre %e (en-bema [our %channel-state da+now ud+tick] /$))
   =;  subs=(list [%g ship term duct])
     [%pass /helm %arvo %g %lave subs]~
   ::

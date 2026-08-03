@@ -27,7 +27,7 @@
 ::  if peer not in ames, abort
 ::
 =+  .^  peers=(map ship ?(%alien %known))  %ax
-    /(scot %p our.bowl)//(scot %da now.bowl)/peers
+    (en-bema [our.bowl %$ da+now.bowl ud+tick.bowl] /peers)
   ==
 ?.  (~(has by peers) who)
   !!  :: XX crash thread?

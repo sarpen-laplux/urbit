@@ -96,10 +96,10 @@
 ::
 ::TODO: make this work with doccords
 :-  %say
-|=  [[now=time @ our=ship ^] typ=$@(~ ?([p=term ~] [p=path ~])) ~]
-:: |=  [[now=time @ our=ship ^] typ=$@(~ [p=term ~]) ~]
-=/  pax=path  /(scot %p our)/base/(scot %da now)/gen  :: XX hardcoded
-=/  pat=path  /(scot %p our)/base/(scot %da now)/ted  :: XX hardcoded
+|=  [[now=@da tick=@ud @ our=ship ^] typ=$@(~ ?([p=term ~] [p=path ~])) ~]
+:: |=  [[now=@da tick=@ud @ our=ship ^] typ=$@(~ [p=term ~]) ~]
+=/  pax=path  (en-bema [our %base [da+now ud+tick]] /gen)  :: XX hardcoded
+=/  pat=path  (en-bema [our %base [da+now ud+tick]] /ted)  :: XX hardcoded
 =+  len=(lent pax)
 ::  Three cases:
 ::  1. A single search term is provided.  Show matches.

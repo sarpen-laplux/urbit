@@ -1,9 +1,9 @@
 ::  print |mesa chums; (e.g. usage: +mesa-peer %lane, =ship ~marnec)
 ::
 :-  %say
-|=  [[now=@da eny=@uvJ bec=beak] arg=$@(~ [face=term ~]) ship=@p]
+|=  [[now=@da tick=@ud eny=@uvJ bec=beak] arg=$@(~ [face=term ~]) ship=@p]
 ::
-=+  .^(=chum-state:ames %ax /(scot %p p.bec)//(scot %da now)/chums/(scot %p ship))
+=+  .^(=chum-state:ames %ax (en-bema [p.bec %$ da+now ud+tick] /chums/(scot %p ship)))
 ::
 ?~  arg
   chum-state

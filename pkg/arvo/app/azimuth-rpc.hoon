@@ -110,6 +110,7 @@
   --
 ::
 |_  =bowl:gall
++*  io  ~(. agentio bowl)
 ++  process-rpc-request
   |=  req=batch-request:rpc
   ^-  [(list cage) simple-payload:http]
@@ -153,29 +154,11 @@
 ::
 ++  scry
   |%
+  ++  dns          .^((list @t) %gx (scry:io %azimuth /dns/noun))
+  ++  naive-state  .^(^state:naive %gx (scry:io %azimuth /nas/noun))
+  ++  refresh      .^(@dr %gx (scry:io %azimuth /refresh/noun))
   ++  point
     |=  =ship
-    .^  (unit point:naive)
-        %gx
-        (~(scry agentio bowl) %azimuth /point/(scot %p ship)/noun)
-    ==
-  ::
-  ++  dns
-    .^  (list @t)
-        %gx
-        (~(scry agentio bowl) %azimuth /dns/noun)
-    ==
-  ::
-  ++  naive-state
-    .^  ^state:naive
-        %gx
-        (~(scry agentio bowl) %azimuth /nas/noun)
-    ==
-  ::
-  ++  refresh
-    .^  @dr
-        %gx
-        (~(scry agentio bowl) %azimuth /refresh/noun)
-    ==
+    .^((unit point:naive) %gx (scry:io %azimuth /point/(scot %p ship)/noun))
   --
 --

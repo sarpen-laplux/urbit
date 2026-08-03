@@ -8,9 +8,10 @@
 ::       (e.g. hoon files)
 ::
 :-  %say
-|=  [[now=@da eny=@uvJ bec=beak] [=path ~] ~]
+|=  [[now=@da tick=@ud eny=@uvJ bec=beak] [=path ~] ~]
 :-  %noun
-?~  beam=(de-beam path)
-  ~|(%path-not-beam !!)
+?~  bema=(de-bema path)
+  ~|(%path-not-bema !!)
+=/  beam  (bema-to-beam u.bema)
 =+  .^(file=@t %cx path)
-[/c/sync %info desk=q.u.beam & [s.u.beam %ins %mime !>([/ (as-octs:mimes:html file)])]~]
+[/c/sync %info desk=q.beam & [s.beam %ins %mime !>([/ (as-octs:mimes:html file)])]~]

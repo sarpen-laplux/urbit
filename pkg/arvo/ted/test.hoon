@@ -103,16 +103,16 @@
   :: if no args, test everything under /=base=/tests
   ::
   ?~  q.arg
-    ~[/(scot %p our.bowl)/[q.byk.bowl]/(scot %da now.bowl)/tests]
+    ~[(en-bema [our.bowl q.byk.bowl da+now.bowl ud+tick.bowl] /tests)]
   ?~  +.q.arg
-    ~[/(scot %p our.bowl)/[q.byk.bowl]/(scot %da now.bowl)/tests]
+    ~[(en-bema [our.bowl q.byk.bowl da+now.bowl ud+tick.bowl] /tests)]
   :: else cast path to ~[path] if needed
   ::
   ?@  +<.q.arg
     [(tail !<([~ path] arg)) ~]
   (tail !<([~ (list path)] arg))
 =/  bez=(list beam)
-  (turn paz |=(p=path ~|([%test-not-beam p] (need (de-beam p)))))
+  (turn paz |=(p=path ~|([%test-not-beam p] (bema-to-beam (need (de-bema p))))))
 ;<  fiz=(set [=beam test=(unit term)])  bind:m  (find-test-files bez)
 =>  .(fiz (sort ~(tap in fiz) aor))
 =|  test-arms=(map path (list test-arm))

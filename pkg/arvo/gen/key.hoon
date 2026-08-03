@@ -4,7 +4,7 @@
 /+  *generators, ethereum
 ::
 :-  %ask
-|=  $:  [now=@da eny=@uvJ bec=beak]
+|=  $:  ^
         [who=ship ~]
         rift=_0
         life=_1

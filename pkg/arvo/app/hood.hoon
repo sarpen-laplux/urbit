@@ -94,7 +94,7 @@
   =+  !<(old=any-state old-state-vase)
   |-  ^-  step:agent:gall
   ?:  ?=(%27 -.old)
-    $(old old(- %28), cards (eyre-clean:load [our now]:bowl))
+    $(old old(- %28), cards (eyre-clean:load [our now tick]:bowl))
   =/  tup=any-state-tuple
     ?:  ?=(?(%29 %30) -.old)
       +.old

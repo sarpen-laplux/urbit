@@ -20,23 +20,26 @@
     +$  val  [bone sub-nonce=@ud last-nonce=(unit @ud) live=?]
     --
 :-  %say
-|=  $:  [now=@da eny=@uvJ bec=beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ bec=beak]
         arg=~
         peer=(unit @p)
         dry=?
         veb=?(%1 %2 %21 %22 %3 %4 %41 ~)
     ==
 ::
+=/  our  p.bec
 =/  our-gall  (gall-raw p.bec)
 =/  peers-map
-  .^((map ship ?(%alien %known)) %ax /(scot %p p.bec)//(scot %da now)/peers)
+  .^  (map ship ?(%alien %known))
+      %ax  (en-bema [our %$ [da+now ud+tick]] /peers)
+  ==
 =/  gall-yokes
-  .^((map dude:gall yoke:our-gall) %gy /(scot %p p.bec)//(scot %da now)/$)
+  .^((map dude:gall yoke:our-gall) %gy (en-bema [our %$ [da+now ud+tick]] /$))
 ::
 =/  peers=(list ship)
   %+  murn  ~(tap by peers-map)
   |=  [=ship val=?(%alien %known)]
-  ?:  =(ship p.bec)
+  ?:  =(ship our)
     ~  ::  this is weird, but we saw it
   ?-  val
     %alien  ~
@@ -54,7 +57,7 @@
   bones
 ::
 =+  .^  =ship-state:ames
-        %ax  /(scot %p p.bec)//(scot %da now)/peers/(scot %p ship)
+        %ax  (en-bema [our %$ [da+now ud+tick]] /peers/(scot %p ship))
     ==
 =/  =peer-state:ames  ?>(?=(%known -.ship-state) +.ship-state)
 |^

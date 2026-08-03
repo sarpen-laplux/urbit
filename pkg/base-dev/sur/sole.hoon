@@ -84,5 +84,5 @@
   ==                                                    ::
 ++  sole-args                                           ::  generator arguments
   |*  _[* *]                                            ::
-  ,[[now=@da eny=@uvJ bek=beak] [,+<- ,+<+]]            ::
+  ,[[now=@da tick=@ud eny=@uvJ bek=beak] [,+<- ,+<+]]   ::
 --

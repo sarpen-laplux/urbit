@@ -16,11 +16,11 @@
     --
 ::
 :-  %say
-|=  [[now=@da eny=@uvJ bec=beak] arg=~ peer=(unit @p) dry=? =veb]
+|=  [[now=@da tick=@ud eny=@uvJ bec=beak] arg=~ peer=(unit @p) dry=? =veb]
 ::
 =/  our-gall  (gall-raw p.bec)
 =/  gall-yokes
-  .^((map dude:gall yoke:our-gall) %gy /(scot %p p.bec)//(scot %da now)/$)
+  .^((map dude:gall yoke:our-gall) %gy (en-bema [p.bec %$ da+now ud+tick] /$))
 =;  flows=(list flow)
   :-  %helm-gall-lave
   ~?  dry  "#{<(lent flows)>} stale incoming subscriptions"
@@ -70,11 +70,11 @@
       (slav %ud &5:i.t.duct)
     ::
     =+  .^  ahoyed=?  %ax
-          [(scot %p p.bec) %$ (scot %da now) %ahoyed (scot %p ship) ~]
+          [(scot %p p.bec) %$ (en-cose da+now ud+tick) %ahoyed (scot %p ship) ~]
         ==
     =.  bone  ?.(ahoyed bone (mix 0b1 bone))
     :-  bone
-    :*  (scot %p p.bec)  %$  (scot %da now)
+    :*  (scot %p p.bec)  %$  (en-cose da+now ud+tick)
         %corked   (scot %p ship)
         ?.  ahoyed
           [(scot %ud bone) ~]

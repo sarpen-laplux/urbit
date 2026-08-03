@@ -6,10 +6,10 @@
 /=  gall-raw  /sys/vane/gall
 ::
 :-  %say
-|=  [[now=@da eny=@uvJ bec=beak] arg=~ dry=? veb=?(%1 %2 ~)]
+|=  [[now=@da tick=@ud eny=@uvJ bec=beak] arg=~ dry=? veb=?(%1 %2 ~)]
 =/  m-gall  (gall-raw p.bec)
-=+  .^(yokes=(map dude:gall yoke:m-gall) %gy /(scot %p p.bec)//(scot %da now)/$)
-=+  .^(=channel-state:eyre %e /(scot %p p.bec)/channel-state/(scot %da now)/$)
+=+  .^(yokes=(map dude:gall yoke:m-gall) %gy (en-bema [p.bec %$ da+now ud+tick] /$))
+=+  .^(=channel-state:eyre %e (en-bema [p.bec %channel-state da+now ud+tick] /$))
 =;  subs=(list [%g ship term duct])
   :-  %helm-eyre-lave
   ~?  dry  "#{<(lent subs)>} stale incoming subscriptions"

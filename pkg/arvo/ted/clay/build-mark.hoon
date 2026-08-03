@@ -6,8 +6,9 @@
 =/  m  (strand ,vase)
 ^-  form:m
 =+  !<([~ pax=path] arg)
-?~  bem=(de-beam pax)
-  (strand-fail:strand %path-not-beam >pax< ~)
-=/  =mark  (rear s.u.bem)
-;<  =dais:clay  bind:m  (build-mark:strandio -.u.bem mark)
+?~  bam=(de-bema pax)
+  (strand-fail:strand %path-not-bema >pax< ~)
+=/  bem=beam  (bema-to-beam u.bam)
+=/  =mark  (rear s.bem)
+;<  =dais:clay  bind:m  (build-mark:strandio -.bem mark)
 (pure:m !>(dais))

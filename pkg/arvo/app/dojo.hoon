@@ -114,11 +114,19 @@
 ::  |parser-at: parsers for dojo expressions using :dir as working directory
 ::
 ++  parser-at
-  |=  [our=ship now=@da dir=beam]
+  |=  [our=ship now=@da tick=@ud dir=beam]
   |%
   ++  default-app         %hood
-  ++  hoon-parser         (vang | (en-beam dir))
+  ++  hoon-parser         (vang | (en-bema (en-tick dir)))
   ++  our                 p.dir
+  ::
+  ++  en-tick
+    |=  b=bema
+    ^-  bema
+    =/  =case  (cose-to-case r.b)
+    ?.  =([%da now] case)
+      b
+    b(r [[%da now] %ud tick])
   ::
   ++  parse-command-line  ;~(sfix parse-command (star ace) (just '\0a'))
   ::
@@ -128,10 +136,10 @@
     =/  =desk
       ::TODO  maybe should recognize if the user specified a desk explicitly.
       ::      currently eats the :app|desk#gen case.
-      =+  gop=/(scot %p our)/[q.gol]/(scot %da now)/$
-      ?.  .^(? %gu gop)
+      =/  pax=path  (en-bema [our q.gol [da+now ud+tick]] /$)
+      ?.  .^(? %gu pax)
         q.dir
-      .^(desk %gd gop)
+      .^(desk %gd pax)
     [[%poke gol] [0 [%ge mod(q.p [desk q.gol path.q.p.mod])]]]
   ::
   ++  parse-variable
@@ -304,7 +312,7 @@
   ++  parse-rood
     ::  XX should this use +hoon-parser instead to normalize the case?
     ::
-    =>  (vang | (en-beam dir))
+    =>  (vang | (en-bema (en-tick dir)))
     ;~  pose
       rood
     ::
@@ -359,8 +367,17 @@
       dir
     dir(r [%da now.hid])
   ::
+  ++  he-bema
+    ^-  bema
+    ?.  ?|  =([%ud 0] r.dir)
+            =([%da now.hid] r.dir)
+        ==
+      dir
+    dir(r [da+now.hid ud+tick.hid])
+  ::
   ++  he-beak    `beak`[p q r]:he-beam
-  ++  he-parser  (parser-at our.hid now.hid he-beam)
+  ++  he-beck    `beck`[p q r]:he-bema
+  ++  he-parser  (parser-at our.hid now.hid tick.hid he-beam)
   ::
   ++  dy                                                ::  project work
     |_  dojo-project                                    ::
@@ -547,7 +564,7 @@
       ?:  ?=([%show %3] -.mad)
         (dy-rash %tan (dy-show-source q.mad) ~)
       ?:  ?=(%brev -.mad)
-        ?:  ?=(?(%eny %now %our %help) p.mad)
+        ?:  ?=(?(%eny %now %tick %our %help) p.mad)
           (dy-rash %tan (cat 3 p.mad ' is immutable') ~)
         =.  var  (~(del by var) p.mad)
         =<  dy-amok
@@ -557,7 +574,7 @@
       =+  cay=(~(got by rez) p.q.mad)
       ?-    -.p.mad
           %verb
-        ?:  ?=(?(%eny %now %our %help) p.p.mad)
+        ?:  ?=(?(%eny %now %tick %our %help) p.p.mad)
           (dy-rash %tan (cat 3 p.p.mad ' is immutable') ~)
         =.  var  (~(put by var) p.p.mad cay)
         ~|  bad-set+[p.p.mad p.q.cay]
@@ -571,7 +588,7 @@
             ?:  ?=([@ ~] pax)  ~[i.pax %base '0']
             ?:  ?=([@ @ ~] pax)  ~[i.pax i.t.pax '0']
             pax
-          ?:  =(~ .^((list path) %ct (en-beam he-beam(dir bem))))
+          ?:  =(~ .^((list path) %ct (en-bema he-bema(dir bem))))
             +(..dy (he-diff %tan 'dojo: dir does not exist' ~))
           =.  dir  bem
           =-  +>(..dy (he-diff %tan - ~))
@@ -826,7 +843,8 @@
       |.  ^-  vase
       =/  gat=vase  (slot 3 q.cay)
       =/  som=vase  (slot 6 gat)
-      =/  ven=vase  !>([now=now.hid eny=eny.hid bec=he-beak(q.dir desk)])
+      =/  ven=vase
+        !>([now=now.hid tick=tick.hid eny=eny.hid bec=he-beak(q.dir desk)])
       =/  poz=vase  (dy-sore p.cig)
       =/  kev=vase
         =/  kuv=(unit vase)  (slew 7 som)
@@ -968,19 +986,19 @@
           %dv  (dy-sing hand+q.bil %a p.bil (snoc q.bil %hoon))
           %ge  (dy-run-generator (dy-cage p.p.p.bil) q.p.bil desk.q.p.p.bil)
           %sa
-        =/  has-mark  .?((get-fit:clay he-beak %mar p.bil))
+        =/  has-mark  .?((get-fit:clay he-beck %mar p.bil))
         ?.  has-mark
           (he-diff(poy ~) %tan leaf+"dojo: %{(trip p.bil)} missing" ~)
-        =+  .^(=dais:clay cb+(en-beam he-beak /[p.bil]))
+        =+  .^(=dais:clay %cb (en-bema he-beck /[p.bil]))
         (dy-hand p.bil *vale:dais)
       ::
           %as
         =/  cag=cage  (dy-cage p.q.bil)
-        =/  has-mark  .?((get-fit:clay he-beak %mar p.bil))
+        =/  has-mark  .?((get-fit:clay he-beck %mar p.bil))
         ?.  has-mark  ::  yolo
           (dy-hand p.bil q.cag)
         =/  res
-          =+  .^(=tube:clay cc+(en-beam he-beak /[p.cag]/[p.bil]))
+          =+  .^(=tube:clay %cc (en-bema he-beck /[p.cag]/[p.bil]))
           (mule |.((tube q.cag)))
         ?:  ?=(%| -.res)
           (he-diff(poy ~) %tan leaf+"dojo: %as %{(trip p.bil)} failed" p.res)
@@ -1043,7 +1061,7 @@
       =/  vaz=(list [term vase])
         (turn ~(tap by var) |=([lal=term cag=cage] [lal q.cag]))
       =.  vaz  (weld ~[`[term vase]`[`@tas`%help !>(dy-help-message)]] vaz)
-      =/  sut  (slop !>([our=our now=now eny=eny]:hid) !>(..zuse))
+      =/  sut  (slop !>([our=our now=now tick=tick eny=eny]:hid) !>(..zuse))
       =?  sut  ?=(^ vaz)  (slop (with-faces vaz) sut)
       (slap sut hoon)
     ::
@@ -1259,7 +1277,8 @@
           :+  %clhp
             [%rock %tas %cx]
           %+  rash  pax.source.com
-          rood:(vang | /(scot %p our.hid)/base/(scot %da now.hid))
+          =<  rood
+          (vang | /(scot %p our.hid)/base/(en-cose da+now.hid ud+tick.hid))
         ::
             %url         [%ur (crip (en-purl:html url.source.com))]
             %api         !!
@@ -1272,7 +1291,7 @@
               [%rock %tas %gx]
               [%sand %ta (scot %p our.hid)]
               [%sand %tas api.source.com]
-              [%sand %ta (scot %da now.hid)]
+              [%sand %ta (en-cose da+now.hid ud+tick.hid)]
               (turn endpoint.source.com |=(a=@t [%sand %ta a]))
           ==
         ::
@@ -1474,8 +1493,8 @@
     ::
     ++  complete-naked-poke
       |=  app=term
-      =+  [our=(scot %p our.hid) now=(scot %da now.hid)]
-      =+  .^(desks=(set desk) %cd /[our]//[now])
+      =+  [our=(scot %p our.hid) cos=(en-cose da+now.hid ud+tick.hid)]
+      =+  .^(desks=(set desk) %cd /[our]//[cos])
       =.  desks  (~(del in desks) %kids)
       %+  complete  (cat 3 ':' app)
       %-  zing
@@ -1483,7 +1502,7 @@
       |=  =desk
       %+  murn
         %~  tap  in
-        .^((set [dude:gall ?]) %ge /[our]/[desk]/[now]/$)
+        .^((set [dude:gall ?]) %ge /[our]/[desk]/[cos]/$)
       |=  [=dude:gall live=?]
       ^-  (unit [term tank])
       ?.  live
@@ -1510,11 +1529,11 @@
         ?:  =(%hood app)
           (cat 3 '|' gen)
         :((cury cat 3) ':' app '|' gen)
-      =+  [our=(scot %p our.hid) now=(scot %da now.hid)]
-      ?.  .^(? %gu /[our]/[app]/[now]/$)
+      =+  [our=(scot %p our.hid) cos=(en-cose da+now.hid ud+tick.hid)]
+      ?.  .^(? %gu /[our]/[app]/[cos]/$)
         ~
-      =+  .^(=desk %gd /[our]/[app]/[now]/$)
-      =/  pfix=path  /[our]/[desk]/[now]/gen/[app]
+      =+  .^(=desk %gd /[our]/[app]/[cos]/$)
+      =/  pfix=path  /[our]/[desk]/[cos]/gen/[app]
       ::
       %^  tab-generators:auto  pfix  `app
       %+  murn
@@ -1522,30 +1541,29 @@
       |=  [=term ~]
       ?.  =(gen (end [3 (met 3 gen)] term))
         ~
-      ?~  =<(fil .^(arch %cy (weld pfix ~[term %hoon])))
+      ?~  =<(fil .^(arch %cy (weld pfix /[term]/hoon)))
         ~
       (some term)
     ::
     ++  complete-naked-gen
       |=  gen=term
       %+  complete  (cat 3 '+' gen)
-      =/  pax=path
-        /(scot %p our.hid)/[q:he-beam]/(scot %da now.hid)/gen
+      =+  [our=(scot %p our.hid) cos=(en-cose da+now.hid ud+tick.hid)]
+      =/  pax=path  /[our]/[q:he-beam]/[cos]/gen
       %^  tab-generators:auto  pax  ~
       %+  murn
         ~(tap by dir:.^(arch %cy pax))
       |=  [=term ~]
       ?.  =(gen (end [3 (met 3 gen)] term))
         ~
-      ?~  =<(fil .^(arch %cy (weld pax ~[term %hoon])))
+      ?~  =<(fil .^(arch %cy (weld pax /[term]/hoon)))
         ~
       (some term)
     ::
     ++  complete-naked-ted
       |=  ted=term
-      =/  pfix=path
-        /(scot %p our.hid)/[q:he-beam]/(scot %da now.hid)/ted
-      =+  .^(paths=(list path) %ct pfix)
+      =+  [our=(scot %p our.hid) cos=(en-cose da+now.hid ud+tick.hid)]
+      =+  .^(paths=(list path) %ct /[our]/[q:he-beam]/[cos]/ted)
       %+  complete  (cat 3 '-' ted)
       %+  murn  paths
       |=  pax=path

@@ -193,7 +193,7 @@
     ::
     =/  peers=(map ship ?(%alien %known))
       .^  (map ship ?(%alien %known))  %ax
-        /(scot %p our.bowl)//(scot %da now.bowl)/peers
+        (en-bema [our.bowl %$ da+now.bowl ud+tick.bowl] /peers)
       ==
     ::  filter to just known peers (not aliens, those are offline)
     ::
@@ -339,7 +339,7 @@
       (~(del by no-response.sat) who)
     ::
     =+  .^  chums=(map ship ?(%known %alien))  %ax
-          /(scot %p our.bowl)//(scot %da now.bowl)/chums
+          (en-bema [our.bowl %$ da+now.bowl ud+tick.bowl] /chums)
         ==
     ::  ahoy the peer if on last-hash, not yet migrated, and not pending
     ::

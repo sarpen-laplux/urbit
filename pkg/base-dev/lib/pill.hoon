@@ -429,16 +429,16 @@
   +$  tier  ?(%fore %hind)  ::  before or after userspace
   ::
   ++  install
-    |=  [as=desk =beak pri=?]
+    |=  [as=desk =beck pri=?]
     ^-  prop
     :^  %prop  (rap 3 %install '-' as ~)  %hind
     ::TODO  will exclude non-:directories files, such as /changelog/txt
     =-  (murn - same)
     ^-  (list (unit ovum))
-    :~  `(file-ovum as (en-beam beak /) ~)
+    :~  `(file-ovum as (en-bema beck /) ~)
       ::
         ?.  pri  ~
-        `(prep-ovum (en-beam beak /) ~)
+        `(prep-ovum (en-bema beck /) ~)
       ::
         `[/d/install/[as] [%seat as]]
     ==

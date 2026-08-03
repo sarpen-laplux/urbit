@@ -248,7 +248,7 @@
     =/  peek  p.res
     =/  pax  (path p)
     ?>  ?=([@ @ @ @ *] pax)
-    =.  i.t.t.t.pax  (scot %da tym)
+    =.  i.t.t.t.pax  (en-cose da+tym ud+0)
     =/  pek  (slum peek [[~ ~] & pax])
     =+  ;;(res=(unit (cask)) pek)
     (bind res tail)
@@ -494,12 +494,14 @@
           %d  %dill
           %e  %eyre
           %g  %gall
+          %i  %iris
           %j  %jael
-          %g  %gall
+          %k  %khan
+          %l  %lick
         ==
       ~&  swaping/vane
-      =/  pax
-        /(scot %p our.hid)/base/(scot %da now.hid)/sys/vane/[vane]
+      =+  [our=(scot %p our.hid) cos=(en-cose da+now.hid ud+tick.hid)]
+      =/  pax  /[our]/base/[cos]/sys/vane/[vane]
       =/  txt  .^(@ %cx (weld pax /hoon))
       %^  slum  installed  now.hid
       [//arvo %what pax^hoon/txt ~]
@@ -514,7 +516,7 @@
       :_  ~
       %-  unix-event:pill
       %-  file-ovum:pill
-      [desk /(scot %p our.hid)/[desk]/(scot %da now.hid) ~]
+      [desk /(scot %p our.hid)/[desk]/(en-cose da+now.hid ud+tick.hid) ~]
     =^  ms  state  (poke-pill pil)
     (emit-cards ms)
   ::

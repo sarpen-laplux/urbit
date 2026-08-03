@@ -1208,9 +1208,9 @@
     ::TODO  refactor this out of %acme, see also arvo#1151
     ::
       %install-from-clay
-    =/  bas=path  /(scot %p our.bow)/base/(scot %da now.bow)/acme
-    =/  key=wain  .^(wain %cx (weld bas /privkey/pem))
-    =/  cer=wain  .^(wain %cx (weld bas /cert/pem))
+    =/  =beck  [our.bow %base [da+now.bow ud+tick.bow]]
+    =/  key=wain  .^(wain %cx (en-bema beck /acme/privkey/pem))
+    =/  cer=wain  .^(wain %cx (en-bema beck /acme/cert/pem))
     (emit %pass /install %arvo %e %rule %cert `[key cer])
   ::
       %init

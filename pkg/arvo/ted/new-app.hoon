@@ -55,7 +55,7 @@
   $(fil t.fil, sob [[`path`p.i.fil `miso:clay`[%ins %mime !>([/ q.i.fil])]] sob])
 ~&  >  "Merging {<(lent sob)>} files into new desk {<desk>}."
 ::  Does the desk exist?
-=/  desks  .^((set ^desk) %cd /(scot %p our.bowl)//(scot %da now.bowl))
+=/  desks  .^((set ^desk) %cd (en-bema [our.bowl %$ da+now.bowl ud+tick.bowl] /))
 ?.  (~(has in desks) desk)
   ~&  >  "Desk {<desk>} does not exist yet; creating."
   ;<  ~  bind:m  (send-raw-card:strandio [%pass /new-app %arvo %c %merg desk our.bowl %base da+now.bowl %init])

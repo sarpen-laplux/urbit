@@ -118,7 +118,8 @@
   =/  aqua-pax
     :-  %i
     /(scot %p her)/j/(scot %p her)/rift/(scot %da now.bowl)/(scot %p who)/noun
-  =/  old-rut  ;;((unit @) (scry-aqua:util noun our.bowl now.bowl aqua-pax))
+  =/  old-rut
+    ;;((unit @) (scry-aqua:util noun our.bowl now.bowl tick.bowl aqua-pax))
   =/  new-rut
     ?~  old-rut
       1
@@ -133,7 +134,7 @@
   =/  aqua-pax
     :-  %i
     /(scot %p her)/j/(scot %p her)/rift/(scot %da now.bowl)/(scot %p who)/noun
-  =/  rut  (scry-aqua:util noun our.bowl now.bowl aqua-pax)
+  =/  rut  (scry-aqua:util noun our.bowl now.bowl tick.bowl aqua-pax)
   ?:  =([~ new-rut] rut)
     (pure:m ~)
   loop
@@ -235,6 +236,7 @@
   =*  loop  $
   ;<  [from=^ship =unix-effect]  bind:m  take-unix-effect
   ;<  now=@da                    bind:m  get-time
+  ;<  tick=@ud                   bind:m  get-tick
   ?.  =(from our)
     ::  our sends the $boon with the halted flow number, at this point
     ::  gall has updated its state adding the app to gall's .halts map
@@ -245,7 +247,7 @@
     :-  %i
     /(scot %p our)/gg/(scot %p our)//(scot %da now)/[%$]/noun
   =+  ;;  flubs=(unit (jug ship term))
-    (scry-aqua:util noun our.bowl now aqua-pax)
+    (scry-aqua:util noun our.bowl now tick aqua-pax)
   ?~  flubs  loop
   ?.  (~(has ju u.flubs) her dap)
     loop
@@ -260,6 +262,7 @@
   =*  loop  $
   ;<  [from=ship =unix-effect]  bind:m  take-unix-effect
   ;<  now=@da                   bind:m  get-time
+  ;<  tick=@ud                  bind:m  get-tick
   ?.  =(from our)
     ::  our ack to the %spur $boon is sent, at this point
     ::  gall has updated its state adding the app to gall's .flubs map
@@ -270,7 +273,7 @@
     :-  %i
     /(scot %p our)/gg/(scot %p our)//(scot %da now)/[%$]/noun
   =+  ;;  flubs=(unit (jug ship term))
-    (scry-aqua:util noun our.bowl now aqua-pax)
+    (scry-aqua:util noun our.bowl now tick aqua-pax)
   ?~  flubs  loop
   ?:  (~(has ju u.flubs) her dap)
     loop
@@ -285,6 +288,7 @@
   =*  loop  $
   ;<  [from=ship =unix-effect]  bind:m  take-unix-effect
   ;<  now=@da                   bind:m  get-time
+  ;<  tick=@ud                  bind:m  get-tick
   ::  only %send or %push effects
   ::
   ?.  ?=(?(%send %push) -.q.unix-effect)
@@ -300,7 +304,7 @@
     :-  %i
     /(scot %p our)/gh/(scot %p our)//(scot %da now)/[%$]/noun
   =+  ;;  halts=(unit (jug app=term [ship =duct]))
-    (scry-aqua:util noun our.bowl now aqua-pax)
+    (scry-aqua:util noun our.bowl now tick aqua-pax)
   ?~  halts  loop
   ?.  (~(has by u.halts) dap)  ::  XX check .her as well
     loop
@@ -315,6 +319,7 @@
   =*  loop  $
   ;<  [from=ship =unix-effect]  bind:m  take-unix-effect
   ;<  now=@da                   bind:m  get-time
+  ;<  tick=@ud                  bind:m  get-tick
   ?.  =(from our)
     ::  when the %spur $boon has been sent, gall has updated its state deleting
     ::  the app from gall's .flubs map
@@ -325,7 +330,7 @@
     :-  %i
     /(scot %p our)/gh/(scot %p our)//(scot %da now)/[%$]/noun
   =+  ;;  halts=(unit (jug app=term [ship =duct]))
-    (scry-aqua:util noun our.bowl now aqua-pax)
+    (scry-aqua:util noun our.bowl now tick aqua-pax)
   ?~  halts  loop
   ?:  (~(has by u.halts) dap) ::  XX check .her as well
     loop
@@ -392,6 +397,7 @@
   =*  loop  $
   ;<  [from=ship =unix-effect]  bind:m  take-unix-effect
   ;<  now=@da                   bind:m  get-time
+  ;<  tick=@ud                  bind:m  get-tick
   ::  only %send or %push effects
   ::
   ?.  ?=(?(%send %push) -.q.unix-effect)
@@ -409,7 +415,7 @@
       /corked/(scot %p her)/(scot %ud +.flow)/noun
     =/  [=bone:ames =dire:ames]  +.flow
     /corked/(scot %p her)/[dire]/(scot %ud bone)/noun
-  =+  ;;  corked=(unit ?)  (scry-aqua:util noun our.bowl now aqua-pax)
+  =+  ;;  corked=(unit ?)  (scry-aqua:util noun our.bowl now tick aqua-pax)
   ?~  corked  loop
   ?.  u.corked  ::  XX check .her as well
     loop
@@ -454,9 +460,10 @@
   =/  m  (strand ,@t)
   ^-  form:m
   ~&  >  "touching file on {<her>}/{<desk>}"
-  ;<  ~        bind:m  (mount her desk)
-  ;<  our=@p   bind:m  get-our
-  ;<  now=@da  bind:m  get-time
+  ;<  ~         bind:m  (mount her desk)
+  ;<  our=@p    bind:m  get-our
+  ;<  now=@da   bind:m  get-time
+  ;<  tick=@ud  bind:m  get-tick
   =/  aqua-pax
     ;:  weld
         /i/(scot %p her)/cx/(scot %p her)/[desk]/(scot %da now)
@@ -466,7 +473,7 @@
   =/  warped
     %^  cat  3  '=>  .  '
     %^  cat  3  extra
-    (need (scry-aqua:util (unit @) our now aqua-pax))
+    (need (scry-aqua:util (unit @) our now tick aqua-pax))
   ;<  ~  bind:m  (send-events (insert-files:util her desk [pax warped] ~))
   (pure:m warped)
 ::
@@ -498,6 +505,7 @@
   ;<  [her=^ship =unix-effect]  bind:m  take-unix-effect
   ;<  our=@p                    bind:m  get-our
   ;<  now=@da                   bind:m  get-time
+  ;<  tick=@ud                  bind:m  get-tick
   ::  %ergo is no longer sufficient because .^ is pinned to beginning of
   ::  the event.  So we hope somebody sets a timer for something.
   ::
@@ -509,7 +517,7 @@
         pax
         /noun
     ==
-  ?:  =(warped (need (scry-aqua:util (unit @) our now aqua-pax)))
+  ?:  =(warped (need (scry-aqua:util (unit @) our now tick aqua-pax)))
     (pure:m ~)
   loop
 ::

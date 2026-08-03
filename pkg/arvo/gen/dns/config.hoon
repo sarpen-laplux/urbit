@@ -5,7 +5,7 @@
 /-  dns, *sole
 /+  *generators
 :-  %ask
-|=  [[now=@da eny=@uvJ bec=beak] ~ ~]
+|=  [[now=@da tick=@ud eny=@uvJ bec=beak] ~ ~]
 |^  ^-  (sole-result (cask [(each address:dns @t) dock ? ?]))
 ?.  ?=(?(%king %duke) (clan:title p.bec))
   (print leaf+"dns: only planets and stars may use this service" no-product)
@@ -19,8 +19,8 @@
 %+  print  leaf+msg3
 %+  print  leaf+msg2
 %+  print  leaf+msg1
-=+  .^([ins=@ud sec=(unit @ud)] %e /(scot %p p.bec)/ports/(scot %da now))
-=+  .^(turfs=(set turf) %e /(scot %p p.bec)/domains/(scot %da now))
+=+  .^([ins=@ud sec=(unit @ud)] %e (en-bema [p.bec %ports da+now ud+tick] /))
+=+  .^(turfs=(set turf) %e (en-bema [p.bec %domains da+now ud+tick] /))
 %^  maybe  !=(80 ins)  (port-check ins)
 |=  ~
 %+  prompt  [%& %dns-address "IP address (leave empty for automatic): "]

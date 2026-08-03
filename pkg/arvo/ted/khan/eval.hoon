@@ -33,7 +33,7 @@
     !<(shed:khan vax)
   =/  bem
     %+  fall
-      (de-beam i.paz)
+      (bind (de-bema i.paz) bema-to-beam)
     [beak i.paz]
   ;<  has=?  bind:m  (check-for-file:strandio bem)
   ?.  has

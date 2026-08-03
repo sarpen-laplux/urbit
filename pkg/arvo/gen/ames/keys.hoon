@@ -3,7 +3,7 @@
 ::    (miss = %.y) only prints missmatches
 ::
 :-  %say
-|=  [[now=time @ bec=beak] arg=$@(~ [=ship ~]) miss=_| core=?(%mesa %ames) ~]
+|=  [[now=time tick=@ud @ bec=beak] arg=$@(~ [=ship ~]) miss=_| core=?(%mesa %ames) ~]
 =/  peers=(list @p)
   ?^  arg
     [ship.arg ~]
@@ -12,10 +12,10 @@
   =+  ^=  peers
       ?:  ?=(%ames core)
         .^  (map ship ?(%alien %known))
-          %ax  /(scot %p p.bec)//(scot %da now)/peers
+          %ax  (en-bema [p.bec %$ [da+now ud+tick]] /peers)
         ==
       .^  (map ship ?(%alien %known))
-        %ax  /(scot %p p.bec)//(scot %da now)/chums
+        %ax  (en-bema [p.bec %$ [da+now ud+tick]] /chums)
       ==
   %-  ~(rep by peers)
   |=  [[=ship val=?(%alien %known)] out=(list @p)]
@@ -39,16 +39,16 @@
         [ames-life=`life ames-rift=`rift]:->
     ?:  ?=(%ames core)
       .^  =ship-state:ames
-        %ax  /(scot %p p.bec)//(scot %da now)/peers/(scot %p ship)
+        %ax  (en-bema [p.bec %$ [da+now ud+tick]] /peers/(scot %p ship))
       ==
     .^  =chum-state:ames
-      %ax  /(scot %p p.bec)//(scot %da now)/chums/(scot %p ship)
+      %ax  (en-bema [p.bec %$ [da+now ud+tick]] /chums/(scot %p ship))
     ==
 
 ::  for each peer scry into %jael and %ames
 ::
 =/  our  (scot %p p.bec)
-=/  now  (scot %da now)
+=/  now  (en-cose da+now ud+tick)
 =/  her  (scot %p ship)
 =+  life=.^((unit @ud) %j /[our]/lyfe/[now]/[her])
 =+  rift=.^((unit @ud) %j /[our]/ryft/[now]/[her])

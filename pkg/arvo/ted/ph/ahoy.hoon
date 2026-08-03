@@ -20,9 +20,9 @@
       ;<  =bowl:spider  bind:m  get-bowl
       =/  aqua-pax
         :-  %i
-        /(scot %p sndr)/cz/(scot %p sndr)/kids/(scot %da now.bowl)/noun
+        /(scot %p sndr)/cz/(scot %p sndr)/kids/(en-cose da+now.bowl ud+0)/noun
       =+  ;;  hash=@uvi
-          (need (scry-aqua:util (unit @uvi) our.bowl now.bowl aqua-pax))
+          (need (scry-aqua:util (unit @uvi) our.bowl now.bowl tick.bowl aqua-pax))
       ::  load hood/ahoy hash
       ::
       ^-  form:m

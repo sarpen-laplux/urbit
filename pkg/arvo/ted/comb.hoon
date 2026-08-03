@@ -29,7 +29,7 @@
   ?^  peers  peers
   =/  all=(map ship ?(%alien %known))
     .^  (map ship ?(%alien %known))  %ax
-      /(scot %p our.bowl)//(scot %da now.bowl)/peers
+      (en-bema [our.bowl %$ da+now.bowl ud+tick.bowl] /peers)
     ==
   %+  murn  ~(tap by all)
   |=  [who=ship sta=?(%alien %known)]

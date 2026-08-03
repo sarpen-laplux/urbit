@@ -12,8 +12,8 @@
 ::  empty paths to begin with.
 =+  !<([~ =a=path b=$~([/hi &] $^([(lest @ta) flag] path))] arg)
 =/  [b-path=path shallow=flag]  ?:(?=([^ *] b) b [`path`b |])
-=/  a-beam  (need (de-beam a-path))
-=/  b-beam  (need (de-beam b-path))
+=/  a-beam  (bema-to-beam (need (de-bema a-path)))
+=/  b-beam  (bema-to-beam (need (de-bema b-path)))
 ;<  a-domo=domo  bind:m  (get-from-clay a-beam domo %v)
 ;<  b-domo=domo  bind:m  (get-from-clay b-beam domo %v)
 ;<  diffs=(list diff-type)  bind:m  (diff-beams a-beam b-beam)

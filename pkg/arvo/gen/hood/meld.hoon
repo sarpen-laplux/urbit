@@ -7,7 +7,7 @@
 ::::
   ::
 :-  %say
-|=  $:  [now=@da eny=@uvJ bec=beak]
+|=  $:  [now=@da tick=@ud eny=@uvJ bec=beak]
         [arg=~ memo=_| ford=_| ~]
     ==
 [%helm-meld memo ford]
