@@ -8,9 +8,9 @@
 ++  make-roof
   |=  [pax=path val=cage]
   ^-  roof
-  |=  [lyc=gang pov=path vis=view bem=beam]
+  |=  [lyc=gang pov=path vis=view bam=bema]
   ^-  (unit (unit cage))
-  ?.  &(=(s.bem pax) |(=(vis %x) =(vis [%$ %x]) =(vis [%g %x]) =(vis [%a %x])))
+  ?.  &(=(s.bam pax) |(=(vis %x) =(vis [%$ %x]) =(vis [%g %x]) =(vis [%a %x])))
     [~ ~]
   ``val
 ::
@@ -22,7 +22,7 @@
     ^-  fren-state:ames
     %:  ames-scry-peer:v
       nec
-      [~1111.1.10 0xdead.beef *roof]
+      [~1111.1.10 tick=0 0xdead.beef *roof]
       [~nec ~bud]
     ==
   =/  key  `@uv`49.444.113.421.508.228.869.460.528.530.323.207.394.851.818.486.403.699.510.004.444.292.293.148.898.490
@@ -57,7 +57,7 @@
   ~?  >  dbug  'send %poke-plea to ~bud'
   =^  moves-1  nec
     %:    ames-check-call:v  nec
-        [~1111.1.1 0xdead.beef *roof]
+        [~1111.1.1 tick=0 0xdead.beef *roof]
     ::
       [~[/poke] %plea ~bud poke-plea]
     ::
@@ -71,7 +71,7 @@
   =/  poke-roof  (make-roof poke-path message+!>(poke-plea))
   =^  moves-2  nec
     %:    ames-check-call:v  nec
-        [~1111.1.1 0xdead.beef poke-roof]
+        [~1111.1.1 tick=0 0xdead.beef poke-roof]
     ::
       [~[[%ames ack-wire] /poke] moke]
     ::
@@ -99,7 +99,7 @@
   ::
   =^  moves-3  bud
     %:  ames-check-call:v  bud
-      [~1111.1.2 0xbeef.dead *roof]
+      [~1111.1.2 tick=0 0xbeef.dead *roof]
       :-  ~[//unix]
       [%mess message]
     ::
@@ -117,7 +117,7 @@
           ^-  fren-state:ames
           %:  ames-scry-peer:v
             bud
-            [~1111.1.10 0xdead.beef *roof]
+            [~1111.1.10 tick=0 0xdead.beef *roof]
             [~bud ~nec]
           ==
         ?&  (~(has by flows) 0 %bak)
@@ -128,7 +128,7 @@
   ~?  >  dbug  '%gall gives %done to %ames'
   =^  moves-5  bud
     %:  ames-check-take:v  bud
-      [~1111.1.2 0xbeef.dead *roof]
+      [~1111.1.2 tick=0 0xbeef.dead *roof]
       :+  vane-wire
         ~[//unix]
       [%gall %done ~]
@@ -153,7 +153,7 @@
           ^-  fren-state:ames
           %:  ames-scry-peer:v
             bud
-            [~1111.1.10 0xdead.beef *roof]
+            [~1111.1.10 tick=0 0xdead.beef *roof]
             [~bud ~nec]
           ==
         last-acked.rcv:(~(got by flows) 0 %bak)
@@ -171,7 +171,7 @@
   ~?  >  dbug  '~nec hears %ack from ~bud, gives to gall'
   =^  moves-8  nec
     %:    ames-check-take:v  nec
-        [~1111.1.1 0xdead.beef *roof]
+        [~1111.1.1 tick=0 0xdead.beef *roof]
       :+  ack-wire
         ~[/poke]
       [%ames %sage ~bud^[%a %x '1' %$ ack-path] `page`message/[%ack error=|]]
@@ -189,7 +189,7 @@
           ^-  fren-state:ames
           %:  ames-scry-peer:v
             nec
-            [~1111.1.10 0xdead.beef *roof]
+            [~1111.1.10 tick=0 0xdead.beef *roof]
             [~nec ~bud]
           ==
         loads.snd:(~(got by flows) 0 %for)
@@ -201,7 +201,7 @@
         ^-  fren-state:ames
         %:  ames-scry-peer:v
           nec
-          [~1111.1.10 0xdead.beef *roof]
+          [~1111.1.10 tick=0 0xdead.beef *roof]
           [~nec ~bud]
         ==
 --

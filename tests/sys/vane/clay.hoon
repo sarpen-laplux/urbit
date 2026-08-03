@@ -230,7 +230,7 @@
       ==
   ^-  [tang _clay-gate]
   ::
-  =/  clay-core  (clay-gate now=now eny=`@`0xdead.beef scry=scry)
+  =/  clay-core  (clay-gate now=now tick=0 eny=`@`0xdead.beef scry=scry)
   ::
   =^  moves  clay-gate  (call:clay-core [duct ~ wrapped-task]:call-args)
   ::
@@ -251,7 +251,7 @@
       ==
   ^-  [tang _clay-gate]
   ::
-  =/  clay-core  (clay-gate now=now eny=`@`0xdead.beef scry=scry)
+  =/  clay-core  (clay-gate now=now tick=0 eny=`@`0xdead.beef scry=scry)
   ::
   =^  moves  clay-gate  (call:clay-core [duct ~ wrapped-task]:call-args)
   ::
@@ -269,7 +269,7 @@
       ==
   ^-  [tang _clay-gate]
   ::
-  =/  clay-core  (clay-gate now=now eny=`@`0xdead.beef scry=scry)
+  =/  clay-core  (clay-gate now=now tick=0 eny=`@`0xdead.beef scry=scry)
   ::
   =^  moves  clay-gate  (take:clay-core [wire duct ~ sign]:take-args)
   ::
@@ -290,7 +290,7 @@
       ==
   ^-  [tang _clay-gate]
   ::
-  =/  clay-core  (clay-gate now=now eny=`@`0xdead.beef scry=scry)
+  =/  clay-core  (clay-gate now=now tick=0 eny=`@`0xdead.beef scry=scry)
   ::
   =^  moves  clay-gate  (take:clay-core [wire duct ~ sign]:take-args)
   ::

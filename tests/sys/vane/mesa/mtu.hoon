@@ -15,9 +15,9 @@
     ++  make-roof
       |=  [pax=path val=cage]
       ^-  roof
-      |=  [lyc=gang pov=path vis=view bem=beam]
+      |=  [lyc=gang pov=path vis=view bam=bema]
       ^-  (unit (unit cage))
-      ?.  ?&(=(s.bem pax) |(=(vis %x) =(vis [%g %x]) =(vis [%a %x]) =(vis %gx) =(vis %ax)))
+      ?.  ?&(=(s.bam pax) |(=(vis %x) =(vis [%g %x]) =(vis [%a %x]) =(vis %gx) =(vis %ax)))
         [~ ~]
       ``val
     ::
@@ -40,7 +40,7 @@
         ^-  fren-state:ames
         %:  ames-scry-peer:v
             sender
-            [~1111.1.10 0xdead.beef *roof]
+            [~1111.1.10 tick=0 0xdead.beef *roof]
             [our:sender our:receiver]
         ==
     [%chum server-life=receiver-life client=our:sender client-life=sender-life key]
@@ -49,7 +49,7 @@
         ^-  fren-state:ames
         %:  ames-scry-peer:v
             receiver
-            [~1111.1.10 0xdead.beef *roof]
+            [~1111.1.10 tick=0 0xdead.beef *roof]
             [our:receiver our:sender]
         ==
     [%chum server-life=sender-life client=our:receiver client-life=receiver-life key]
@@ -271,7 +271,7 @@
         ^-  fren-state:ames
         %:  ames-scry-peer:v
             sender
-            [~1111.1.10 0xdead.beef *roof]
+            [~1111.1.10 tick=0 0xdead.beef *roof]
             [our:sender our:receiver]
         ==
     [%chum server-life=receiver-life client=our:sender client-life=sender-life key]
@@ -280,7 +280,7 @@
         ^-  fren-state:ames
         %:  ames-scry-peer:v
             receiver
-            [~1111.1.10 0xdead.beef *roof]
+            [~1111.1.10 tick=0 0xdead.beef *roof]
             [our:receiver our:sender]
         ==
     [%chum server-life=sender-life client=our:receiver client-life=receiver-life key]
@@ -342,7 +342,7 @@
         ^-  fren-state:ames
         %:  ames-scry-peer:v
             sender
-            [~1111.1.10 0xdead.beef *roof]
+            [~1111.1.10 tick=0 0xdead.beef *roof]
             [our:sender our:receiver]
         ==
     [%chum server-life=receiver-life client=our:sender client-life=sender-life key]
@@ -351,7 +351,7 @@
         ^-  fren-state:ames
         %:  ames-scry-peer:v
             receiver
-            [~1111.1.10 0xdead.beef *roof]
+            [~1111.1.10 tick=0 0xdead.beef *roof]
             [our:receiver our:sender]
         ==
     [%chum server-life=sender-life client=our:receiver client-life=receiver-life key]

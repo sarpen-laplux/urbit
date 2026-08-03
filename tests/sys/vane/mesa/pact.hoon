@@ -10,9 +10,9 @@
     ++  make-roof
       |=  [pax=path val=cage]
       ^-  roof
-      |=  [lyc=gang pov=path vis=view bem=beam]
+      |=  [lyc=gang pov=path vis=view bam=bema]
       ^-  (unit (unit cage))
-      ?.  ?&(=(s.bem pax) |(=(vis %x) =(vis [%g %x]) =(vis %gx) =(vis %ax)))
+      ?.  ?&(=(s.bam pax) |(=(vis %x) =(vis [%g %x]) =(vis %gx) =(vis %ax)))
         [~ ~]
       ``val
     ::

@@ -29,7 +29,7 @@
     ^-  fren-state:ames
     %:  ames-scry-peer:v
       nec
-      [~1111.1.10 0xdead.beef *roof]
+      [~1111.1.10 tick=0 0xdead.beef *roof]
       [~nec ~bud]
     ==
   =/  key  `@uv`49.444.113.421.508.228.869.460.528.530.323.207.394.851.818.486.403.699.510.004.444.292.293.148.898.490
@@ -75,7 +75,7 @@
     [%meek space ~bud full-nax-path]
   ~?  >  dbug  '~nec hears %nack, produces %meek request'
   =^  error-moves  nec
-    %:    ames-check-take:v  nec  [now=~1111.1.1 eny=`@`0xdead.beef poke-roof]
+    %:    ames-check-take:v  nec  [now=~1111.1.1 tick=0 eny=`@`0xdead.beef poke-roof]
       :+  ack-wire  ~[/poke]
       [%ames %sage ~bud^[%a %x '1' %$ ack-path] `page`message/[%ack error=&]]
     ::
@@ -111,7 +111,7 @@
   ~?  >  dbug  '~nec takes %naxplanation from ~bud, given by the packet layer'
   =^  moves-3  nec
     %:    ames-check-take:v  nec
-        [~1111.1.1 0xdead.beef *roof]
+        [~1111.1.1 tick=0 0xdead.beef *roof]
       ~|  moves-page
       =.  moves-page
         %+  skim  moves-page
@@ -133,7 +133,7 @@
     !>  =<  next-bone.ossuary
         %:  ames-scry-peer:v
           bud
-          [~1111.1.10 0xdead.beef *roof]
+          [~1111.1.10 tick=0 0xdead.beef *roof]
           [~bud ~nec]
         ==
 --

@@ -60,7 +60,7 @@
         ~&  no-item/sage.syn
         `this
       =/  =path
-        /(scot %p our.bowl)/[q.byk.bowl]/(scot %da now.bowl)/[p.q.sage.syn]
+        (en-bema [our.bowl q.byk.bowl da+now.bowl ud+tick.bowl] /[p.q.sage.syn])
       =+  .^  =dais:clay  %cb
         path
       ==

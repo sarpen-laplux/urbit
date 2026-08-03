@@ -349,7 +349,7 @@
     ::  custom scry handler for +test-fine-response.
     ::  could be refined further...
     ::
-    |=  [lyc=gang pov=path vis=view bem=beam]
+    |=  [lyc=gang pov=path vis=view bam=bema]
     ^-  (unit (unit cage))
     ?+  vis  ~
         %cp
@@ -358,8 +358,8 @@
       ``noun+!>([black black])
     ::
         %cz
-      ?+  -.r.bem  !!
-        %ud  ``noun+!>((n-frags p.r.bem))
+      ?+  -.r.bam  !!
+        %ud  ``noun+!>((n-frags p.r.bam))
       ==
     ::
         %cx
@@ -745,7 +745,7 @@
   =/  ror  (sift-roar:ames num-frag (flop paz))  :: XX rename
   =/   event-core
     ~!  nec
-    =/   foo  [*@da *@uvJ rof.nec]
+    =/   foo  [*@da *@ud *@uvJ rof.nec]
     (ev:ames:(nec foo) foo *duct ames-state.nec)
   =/  dat
     ?>  ?=(^ dat.ror)

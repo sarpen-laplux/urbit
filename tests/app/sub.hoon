@@ -203,7 +203,7 @@
     ~&  no-item/sage.sign-arvo
     `this
   =/  =path
-    /(scot %p our.bowl)/[q.byk.bowl]/(scot %da now.bowl)/[p.q.sage.sign-arvo]
+    (en-bema [our.bowl q.byk.bowl da+now.bowl ud+tick.bowl] /[p.q.sage.sign-arvo])
   =+  .^  =dais:clay  %cb
     path
   ==
