@@ -2628,7 +2628,7 @@
         ==
     ::
     ::
-    |=  [now=@da eny=@ rof=roof]
+    |=  [now=@da tick=@ud eny=@ rof=roof]
     =*  larval-gate  .
     =*  adult-core   (adult-gate +<)
     ::  formal interface with no extra arms
@@ -3357,7 +3357,7 @@
           %+  skim
             ;;  (list [@da duct])
             =<  q.q  %-  need  %-  need
-            (rof [~ ~] /ames %bx [[our %$ da+now] /debug/timers])
+            (rof [~ ~] /ames %bx [our %$ da+now ud+tick] /debug/timers)
           |=([@da =duct] ?=([[%ames %recork *] *] duct))
         ==
       ::
@@ -3436,7 +3436,7 @@
       ?>  ?=(%36 -.old)
       $(-.u.cached-state %37, moz (weld moz (moves-36-to-37 +.old)))
       ::
-      ++  our-beam  `beam`[[our %rift %da now] /(scot %p our)]
+      ++  our-beam  `bema`[[our %rift da+now ud+tick] /(scot %p our)]
       ++  state-4-to-5
         |=  ames-state=ames-state-4
         ^-  ames-state-5
@@ -3472,7 +3472,7 @@
           ?:  ?=(%pawn (clan:title ship))  0
           ;;  @ud
           =<  q.q  %-  need  %-  need
-          (rof [~ ~] /ames %j `beam`[[our %rift %da now] /(scot %p ship)])
+          (rof [~ ~] /ames %j `bema`[[our %rift da+now ud+tick] /(scot %p ship)])
         :-   -.ship-state
         :_  +.peer-state
         =,  -.peer-state
@@ -4134,7 +4134,7 @@
             ?:  ?=(%pawn (clan:title ship))  0
             ;;  @ud
             =<  q.q  %-  need  %-  need
-            (rof [~ ~] /ames %j `beam`[[our %rift %da now] /(scot %p ship)])
+            (rof [~ ~] /ames %j `bema`[[our %rift da+now ud+tick] /(scot %p ship)])
           ==
         ::  last pass to fix rifts in .peers
         ::
@@ -4159,7 +4159,7 @@
             ?:  ?=(%pawn (clan:title ship))  0
             ;;  @ud
             =<  q.q  %-  need  %-  need
-            (rof [~ ~] /ames %j `beam`[[our %rift %da now] /(scot %p ship)])
+            (rof [~ ~] /ames %j `bema`[[our %rift da+now ud+tick] /(scot %p ship)])
           ==
         ==
       ::
@@ -4566,7 +4566,7 @@
     --
 ::  %adult core
 ::
-|=  [now=@da eny=@uvJ rof=roof]
+|=  [now=@da tick=@ud eny=@uvJ rof=roof]
 =*  vane-gate  .
 =>  ::  core helpers
     ::
@@ -4672,7 +4672,7 @@
         ^-  (list lane)
         =/  sponsor=@p
           ?:  ?=([* ~ %known *] peer)  sponsor.u.peer
-          (^^sein:title rof /ames our now her)
+          (^^sein:title rof /ames our now tick her)
         ?:  ?=(%czar (clan:title sponsor))
           ?:  =(our sponsor)
             ~
@@ -4706,7 +4706,7 @@
         ^-  (list lane:pact)
         =/  sponsor=@p
           ?:  ?=([* ~ %known *] peer)  sponsor.u.peer
-          (^^sein:title rof /ames our now her)
+          (^^sein:title rof /ames our now tick her)
         ?:  ?=(%czar (clan:title sponsor))
           ?:  =(our sponsor)
             ~
@@ -4758,7 +4758,7 @@
       |=  =ship
       ^-  (unit @ux)
       =/  sax
-        (rof [~ ~] /sax %j `beam`[[our %saxo %da now] /(scot %p ship)])
+        (rof [~ ~] /sax %j `bema`[[our %saxo da+now ud+tick] /(scot %p ship)])
       ?.  ?=([~ ~ *] sax)
         ~  :: XX log
       =/  gal  (rear ;;((list ^ship) q.q.u.u.sax))  :: XX only galaxy
@@ -4786,7 +4786,7 @@
         ;;  [suite=@ud =pass]
         =<  q.q  %-  need  %-  need
         %^  rof  [~ ~]  /mesa
-        [%j `beam`[[our %puby %da now] /(scot %p ship)/(scot %ud life)]]
+        [%j `bema`[[our %puby da+now ud+tick] /(scot %p ship)/(scot %ud life)]]
       ?.  =(life life.+.u.chum)
         ~  :: XX  log?
       `symmetric-key.+.u.chum
@@ -4898,8 +4898,8 @@
       ::
       =<  ::  adult |ames formal interface, after metamorphosis from larva
           ::
-          |=  [now=@da eny=@uvJ rof=roof]
-          =.  vane-gate  vane-gate(now now, eny eny, rof rof)  :: XX
+          |=  [now=@da tick=@ud eny=@uvJ rof=roof]
+          =.  vane-gate  vane-gate(now now, tick tick, eny eny, rof rof)  :: XX
           =*  veb  veb.bug.ames-state
           |%
           ::  +call: handle request $task
@@ -4910,7 +4910,7 @@
             ::
             ~|  wrapped-task
             =/  =task       ((harden task) wrapped-task)
-            =/  event-core  (ev now^eny^rof duct ames-state)
+            =/  event-core  (ev now^tick^eny^rof duct ames-state)
             ::
             =^  moves  ames-state
               =<  abet
@@ -4976,7 +4976,7 @@
             ?^  dud
               ~|(%ames-take-dud (mean tang.u.dud))
             ::
-            =/  event-core  (ev now^eny^rof duct ames-state)
+            =/  event-core  (ev now^tick^eny^rof duct ames-state)
             ::
             =^  moves  ames-state
               ?:  ?=([%gall %unto *] sign)
@@ -5008,7 +5008,7 @@
       ++  ev
         =|  moves=(list move)
         ~%  %event-gate  ..ev  ~
-        |=  [[now=@da eny=@uvJ rof=roof] =duct ames-state=axle]
+        |=  [[now=@da tick=@ud eny=@uvJ rof=roof] =duct ames-state=axle]
         =*  veb  veb.bug.ames-state
         =|  cork-bone=(unit bone)  ::  modified by +on-kroc
         =|  vane=?(%fine %ames)
@@ -5055,7 +5055,7 @@
         ++  get-sponsors
           ;;  (list ship)
           =<  q.q  %-  need  %-  need
-          (rof [~ ~] /ames %j `beam`[[our %saxo %da now] /(scot %p our)])
+          (rof [~ ~] /ames %j `bema`[[our %saxo da+now ud+tick] /(scot %p our)])
         ::
         +|  %tasks
         ::  +on-take-flub: vane not ready to process message, pretend it was
@@ -5224,7 +5224,7 @@
           ++  do-rift
             =/  =rift
               =-  ~|(%no-rift (,@ q.q:(need (need -))))
-              (rof [~ ~] /ames %j `beam`[[our %rift %da now] /(scot %p our)])
+              (rof [~ ~] /ames %j `bema`[[our %rift da+now ud+tick] /(scot %p our)])
             ?:  =(rift rift.ames-state)
               event-core
             ~&  "ames: fixing rift from {<rift.ames-state>} to {<rift>}"
@@ -5278,7 +5278,7 @@
               =/  tim
                 ;;  (list [@da ^duct])
                 =<  q.q  %-  need  %-  need
-                (rof [~ ~] /ames %bx [[our %$ da+now] /debug/timers])
+                (rof [~ ~] /ames %bx [our %$ da+now ud+tick] /debug/timers)
               %+  roll  tim
               |=  [[tid=@da hen=^duct] has=(set [@da ^duct])]
               ?.  ?=  [[%ames ?(%pump %recork %routes %mesa %dead-flow) *] *]
@@ -9476,7 +9476,7 @@
               =/  ship  our
               |-
               ^-  @p
-              =/  next  (^^sein:title rof /ames our now ship)
+              =/  next  (^^sein:title rof /ames our now tick ship)
               ?:  ?=(%czar (clan:title next))
                 next
               $(ship next)
@@ -11510,7 +11510,7 @@
           =/  turfs
             ;;  (list turf)
             =<  q.q  %-  need  %-  need
-            (rof [~ ~] /ames %j `beam`[[our %turf %da now] /])
+            (rof [~ ~] /ames %j `bema`[[our %turf da+now ud+tick] /])
           ::
           =?  sy-core  ?=(~ +.chum.dead.ames-state)
             %-  sy-emit
@@ -11766,7 +11766,7 @@
               =|  =point:jael
               =.  life.point     life
               =.  keys.point     (my [life crypto-suite pass]~)
-              =.  sponsor.point  `(^^sein:title rof /ames our now ship)
+              =.  sponsor.point  `(^^sein:title rof /ames our now tick ship)
               ::
               (on-publ-full (my [ship point]~))
             ::
@@ -11988,7 +11988,7 @@
               =/  gal=(unit @p)
                 =/  sax
                   %^  rof  [~ ~]  /ames
-                  j/`beam`[[our %saxo %da now] /(scot %p ship)]
+                  j/`bema`[[our %saxo da+now ud+tick] /(scot %p ship)]
                 ?.  ?=([~ ~ *] sax)
                   ~
                 `(rear ;;((list @p) q.q.u.u.sax))
@@ -12483,7 +12483,7 @@
         ++  sy-get-sponsors
           ;;  (list ship)
           =<  q.q  %-  need  %-  need
-          (rof [~ ~] /ames %j `beam`[[our %saxo %da now] /(scot %p our)])
+          (rof [~ ~] /ames %j `bema`[[our %saxo da+now ud+tick] /(scot %p our)])
         ::
         ++  sy-rederive-mesa-pit
           |=  [=ship =fren-state =our=life =her=life new-key=symmetric-key]
@@ -12648,7 +12648,7 @@
           =.  sponsor.peer
             ?^  sponsor.point
               u.sponsor.point
-            (^^sein:title rof /ames our now ship)
+            (^^sein:title rof /ames our now tick ship)
           ::
           =?  sy-core  ?&  ?=(%czar (clan:title ship))
                             ?=(^ unix-duct)
@@ -12822,7 +12822,7 @@
             =/  gal=(unit @p)
               =/  sax
                 %^  rof  [~ ~]  /ames
-                j/`beam`[[our %saxo %da now] /(scot %p ship)]
+                j/`bema`[[our %saxo da+now ud+tick] /(scot %p ship)]
               ?.  ?=([~ ~ *] sax)
                 ~
               `(rear ;;((list @p) q.q.u.u.sax))
@@ -13736,7 +13736,7 @@
     ::
     ++  pe-core  .
     ++  me-core  mesa
-    ++  am-core  (ames now eny rof)
+    ++  am-core  (ames now tick eny rof)
     ++  ev-core  ev-core:ev:me-core
     ++  al-core  (al-abed:al:me-core hen)
     ++  pe-abed  |=(=duct pe-core(hen duct))
@@ -14307,11 +14307,11 @@
               (~(put by chums.ames-state.me-core) her-pok known/per)
             =/  flow-roof
               ^-  roof
-              |=  [lyc=gang pov=path vis=view bem=beam]
+              |=  [lyc=gang pov=path vis=view bam=bema]
               ^-  (unit (unit cage))
-              ?:  =(s.bem (pout ack))
+              ?:  =(s.bam (pout ack))
                 (peek-flow:na:me-core lyc (pout ack))
-              (rof lyc pov vis bem)
+              (rof lyc pov vis bam)
             ::
             =<  moves
             %.  [space=[%none ~] spar=[her-pok pat.ack.pact]]
@@ -14373,7 +14373,7 @@
   ~>  %spin.['call/ames']
   =*  sample  +<
   =+  me-core=mesa
-  =+  am-core=(ames now eny rof)
+  =+  am-core=(ames now tick eny rof)
   =/  =task  ((harden task) wrapped-task)
   ?:  &(?=(~ unix-duct) ?=(?(%hear %heer %mess) -.task))
     ::  drop incoming packets until we get a %born
@@ -14429,7 +14429,7 @@
   ~>  %spin.['take/ames']
   =*  sample  +<
   =+  me-core=mesa
-  =+  am-core=(ames now eny rof)
+  =+  am-core=(ames now tick eny rof)
   ?^  dud
     ~|(%ames-take-dud (mean tang.u.dud))
   ::
@@ -14483,7 +14483,7 @@
   |=  [lyc=gang pov=path car=term bem=beam]
   =*  sample  +<
   =+  me-core=mesa
-  =+  am-core=(ames now eny rof)
+  =+  am-core=(ames now tick eny rof)
   ?:  ?&  =(our p.bem)
           =(%$ q.bem)
           =([%ud 1] r.bem)

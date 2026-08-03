@@ -2815,14 +2815,14 @@
     --
   ::
   ++  get-fit
-    |=  [bek=beak pre=@tas pax=@tas]
+    |=  [bec=beck pre=@tas pax=@tas]
     ^-  (unit path)
     =/  paz  (segments pax)
     |-  ^-  (unit path)
     ?~  paz
       ~
     =/  puz=path  (snoc `path`[pre i.paz] %hoon)
-    =+  .^(=arch cy+[(scot %p p.bek) q.bek (scot r.bek) puz])
+    =+  .^(=arch %cy (en-bema bec puz))
     ?^  fil.arch
       `puz
     $(paz t.paz)
@@ -3739,6 +3739,7 @@
         $:  act=@ud                                     ::  change number
             eny=@uvJ                                    ::  entropy
             now=@da                                     ::  current time
+            tick=@ud                                    ::  arvo tick
             byk=beak                                    ::  load source
     ==  ==                                              ::                                                  ::
   +$  dude  term                                        ::  server identity
@@ -4535,6 +4536,7 @@
         sup=bitt:gall
         eny=@uvJ
         now=@da
+        tick=@ud
         byk=beak
     ==
   ::
@@ -4655,9 +4657,8 @@
           ::  skip validating raw nouns
           ::
           [%noun %noun in]
-        =+  .^  =dais:clay  %cb
-                /(scot %p our.bowl)/[q.byk.bowl]/(scot %da now.bowl)/[mark]
-            ==
+        =/  =beck  [our q.byk da+now ud+tick]:bowl
+        =+  .^(=dais:clay %cb (en-bema beck /[mark]))
         =/  res  (mule |.((vale.dais in)))
         ?:  ?=(%| -.res)
           ~|  %spider-mark-fail

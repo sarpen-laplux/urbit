@@ -4657,7 +4657,7 @@
     $:  ver=%17                                       ::  vane version
         ruf=raft                                      ::  revision tree
     ==                                                ::
-|=  [now=@da eny=@uvJ rof=roof]                       ::  current invocation
+|=  [now=@da tick=@ud eny=@uvJ rof=roof]              ::  current invocation
 ~%  %clay-top  ..part  ~
 |%                                                    ::
 ++  call                                              ::  handle request

@@ -80,7 +80,7 @@
 ::::::::                                                ::  dill tiles
 --
 =|  all=axle
-|=  [now=@da eny=@uvJ rof=roof]                         ::  current invocation
+|=  [now=@da tick=@ud eny=@uvJ rof=roof]                ::  current invocation
 =>  ~%  %dill  ..part  ~
     |%
     ++  as                                              ::  per cause
@@ -152,7 +152,7 @@
       ++  sponsor
         ^-  ship
         =/  dat=(unit (unit cage))
-          (rof [~ ~] /dill j/[[our sein/da/now] /(scot %p our)])
+          (rof [~ ~] /dill %j [our %sein da+now ud+tick] /(scot %p our))
         ;;(ship q.q:(need (need dat)))
       ::
       ++  init                                          ::  initialize
