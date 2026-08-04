@@ -187,6 +187,12 @@
         %fact
       ?>  ?=(%sole-effect p.cage.sign)
       =^  cards  this  (take-sole-effect !<(sole-effect q.cage.sign))
+      ::  only unsubscribe once the command's result has been served:
+      ::  under breadth-first move order dojo's initial prompt fact
+      ::  arrives before our command poke produces output, and leaving
+      ::  on it would orphan the result
+      ::
+      ?~  cards  [~ this]
       [[[%pass /sole %agent [our.bowl %dojo] %leave ~] cards] this]
     ==
   ==
