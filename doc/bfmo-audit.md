@@ -85,3 +85,15 @@ examined. Fixed items are in the git history; this file records what was
   subscriber A's state) to pin the documented semantics.
 - OTA test exercising +sys-update's [/what, %zeal, %pork] path and the
   a234 debt conversion.
+
+## V-track live status (session handoff)
+
+Port BOOTS; console dojo fully works (pty driver). Open bug: lens/HTTP.
+Fresh pier: request 1 sets job.state + watches dojo, but the response
+chain never completes (curl gets nothing); request 2 then crashes on
+lens.hoon:84 `?> ?=(~ job.state)` (spot-only tang, eyre 500 + %leave).
+Suspect: dojo-side sole flow stalls under BF (check lens on-agent
+watch-ack -> %sole-action poke to dojo, and dojo's ticked scries).
+Tools: ~/PLAN/bfmo-piers/{boot.sh,ota.sh,ptydrive.py}; patched fork
+runtime in ~/PLAN/vere (kelvins 407/319/233, wynn fix, trace renderer,
+serf goof printing). |verb move-trace confirmed BF delivery working.
