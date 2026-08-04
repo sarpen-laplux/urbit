@@ -3,7 +3,7 @@
 |%
 +|  %global
 ::
-++  arvo  %234  ::  XX TESTING: %233 before merge (vere 4.6 pins 234)
+++  arvo  %233
 ::
 ::  $arch: node identity
 ::  $axal: fundamental node, recursive (trie)
@@ -217,12 +217,10 @@
       van=(map term (trap vase))
   ==
 +$  heir
-  $%  [%grub %234 =grub]  ::NOTE  no old versions, unused
-      ::  XX TESTING: restore the %233 arms and the old-shape
-      ::  [%234 =debt:a234 =soul] arm before merge
-      ::
+  $%  [%grub %233 =grub]  ::NOTE  no old versions, unused
       [?(%240 %239 %238 %237 %236 %235) =debt:a234 =soul:a235]
-      [%234 =debt =soul]
+      [%234 =debt:a234 =soul]
+      [%233 =debt =soul]
   ==
 +$  plan  (pair germ (list move))
 +$  soul
@@ -2033,7 +2031,7 @@
   =.  sol
     ?-  -.hir
       ?(%240 %239 %238 %237 %236 %235)  (next-soul:a235 soul.hir)
-      %234                              soul.hir
+      ?(%234 %233)                      soul.hir
     ==
   ::  clear compiler caches
   ::
@@ -2050,8 +2048,8 @@
   ::
   =/  det=debt
     ?-  -.hir
-      ?(%240 %239 %238 %237 %236 %235)  (next-debt:a234 debt.hir)
-      %234                              debt.hir
+      ?(%240 %239 %238 %237 %236 %235 %234)  (next-debt:a234 debt.hir)
+      %233                                   debt.hir
     ==
   =/  zef=(each (pair (list ovum) soul) (trap ^))
     loop:(~(jump le:part [pit vil] sol) det)
