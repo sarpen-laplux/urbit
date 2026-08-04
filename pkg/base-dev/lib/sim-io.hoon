@@ -48,10 +48,10 @@
     ::
     ++  bind
       |*  b=mold
-      |=  [mon=raw-form:(sio-thread b) con=$-(b form)]
+      |=  [mon=(sio-form b) con=$-(b form)]
       ^-  form
       |=  s=sat
-      =^  yil=yild:(sio-thread b)  s  (mon s)
+      =^  yil=(sio-yild b)  s  (mon s)
       ?.  ?=(%done -.yil)  [yil s]
       ((con p.yil) s)
     ::  +pin: bind, continuation also receives the threaded state
@@ -63,21 +63,17 @@
     ::
     ++  pin
       |*  b=mold
-      |=  [mon=raw-form:(sio-thread b) con=$-([b sat] form)]
+      |=  [mon=(sio-form b) con=$-([b sat] form)]
       ^-  form
       |=  s=sat
-      =^  yil=yild:(sio-thread b)  s  (mon s)
+      =^  yil=(sio-yild b)  s  (mon s)
       ?.  ?=(%done -.yil)  [yil s]
       ((con [p.yil s]) s)
     --
-  ::  +sio-thread: raw shapes for cross-mold binds (lia's script-raw-form)
+  ::  raw shapes for cross-mold binds (lia's script-raw-form pattern)
   ::
-  ++  sio-thread
-    |*  a=mold
-    |%
-    ++  yild      $%([%done p=a] [%fail p=tang])
-    ++  raw-form  $-(sat (pair yild sat))
-    --
+  ++  sio-yild  |*  a=mold  $%([%done p=a] [%fail p=tang])
+  ++  sio-form  |*  a=mold  $-(sat (pair (sio-yild a) sat))
   ::  state primitives (all typecheck as raw-form of their result)
   ::
   ++  get                                       ::  read state
