@@ -1047,7 +1047,7 @@
   ++  galaxy-for
     |=  =ship
     ^-  @p
-    =/  next  (^^sein:title rof /eyre our now ship)
+    =/  next  (^^sein:title rof /eyre our now tick ship)
     ?:  ?=(%czar (clan:title next))
       next
     $(ship next)
@@ -1126,7 +1126,7 @@
         [~ ~]
         /eyre
         %ax
-        [our %$ da+now]
+        [our %$ da+now ud+tick]
         :+  %boot  (scot %p u.ship)
         ?~(bone ~ [(scot %ud u.bone) ~])  :: XX
       ==
@@ -3612,7 +3612,7 @@
     ::  this is not ideal, but we have no other way of knowing,
     ::  and don't want to set duplicate timers...
     ::
-    ?:  ?~  res=(rof [~ ~] /eyre %bx [our %$ da+now] /debug/timers)  |
+    ?:  ?~  res=(rof [~ ~] /eyre %bx [our %$ da+now ud+tick] /debug/timers)  |
         ?~  u.res  |
         %+  lien  !<((list [@da ^duct]) q.u.u.res)
         |=  [@da d=^duct]
