@@ -4,7 +4,7 @@
 =>  ..part
 ~%  %lull  ..part  ~
 |%
-++  lull  %319
+++  lull  %320  ::  XX TESTING: revert to %319 before merge (vere 4.6 pins 320)
 ::                                                      ::  ::
 ::::                                                    ::  ::  (1) models
   ::                                                    ::  ::

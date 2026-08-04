@@ -4,7 +4,7 @@
 =>  ..lull
 ~%  %zuse  ..part  ~
 |%
-++  zuse  %407
+++  zuse  %408  ::  XX TESTING: revert to %407 before merge (vere 4.6 pins 408)
 ::                                                      ::  ::
 ::::                                                    ::  ::  (2) engines
   ::                                                    ::  ::
