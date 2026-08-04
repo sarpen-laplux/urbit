@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+#  bfmo-lint: regression gate for the breadth-first-move-order port.
+#
+#  Greps for legacy (tickless) patterns that the port eliminated.
+#  Two kinds of check:
+#    - zero-tolerance: any hit is a regression
+#    - baseline: a fixed number of known-benign hits (wire names, display
+#      text, aqua-overwritten inner paths); an INCREASE is a regression
+#
+#  Run from the repo root before committing on this branch.
+
+set -u
+cd "$(git rev-parse --show-toplevel)"
+fail=0
+
+hits() { grep -rnE "$1" ${3:-pkg tests} --include='*.hoon' 2>/dev/null \
+         | grep -v '/interface/' | grep -vE "${2:-__none__}" || true; }
+
+zero() { # pattern, exclude-regex, scope, label
+  out=$(hits "$1" "$2" "$3")
+  if [ -n "$out" ]; then
+    echo "FAIL (expect zero): $4"
+    echo "$out" | head -20
+    fail=1
+  else
+    echo "ok: $4"
+  fi
+}
+
+base() { # pattern, exclude-regex, scope, expected-count, label
+  n=$(hits "$1" "$2" "$3" | wc -l | tr -d ' ')
+  if [ "$n" -gt "$4" ]; then
+    echo "FAIL (baseline $4, got $n): $5"
+    hits "$1" "$2" "$3" | head -20
+    fail=1
+  else
+    echo "ok ($n/$4): $5"
+  fi
+}
+
+#  generator/vane samples missing tick
+zero '\[\[now=@da eny=' '' 'pkg tests' 'say-generator sample without tick'
+zero '\|=  \[now=@da eny=' '' 'pkg tests' 'vane-shaped sample without tick'
+
+#  de-beam parsing of user/dojo paths in teds and gens (must be de-bema)
+zero '\(de-beam' '' 'pkg/arvo/ted pkg/arvo/gen' 'de-beam in ted/gen'
+
+#  test fixtures invoking vane gates without a tick
+zero '\-gate now=~[0-9.]+ eny=' '' 'tests pkg/arvo/lib/test' 'tickless vane-gate call in tests'
+zero '\[~1111[0-9.]* 0x[0-9a-f.]+ [a-z*-]*roof\]' '' 'tests pkg/arvo/lib/test' 'tickless positional sample tuple in tests'
+
+#  literal roof gates typed on beam (roof now takes bema)
+zero 'lyc=gang pov=path vis=view bem=beam' '' 'pkg tests' 'literal roof gate typed on beam'
+
+#  known-benign current-date renderings: wire names, display text, comments,
+#  vang parser paths, aqua-overwritten inner-ship paths.  count must not grow.
+base 'scot %da now' '' 'pkg tests' 31 'scot-%da-now occurrences (benign baseline)'
+
+#  current-date beam literals outside sys (sys audited by hand); the benign
+#  remainder are vane-scry-arm calls in test libs and strandio get-beak.
+base 'da\+now\]' 'ud\+tick|ud\+0|tick\.bowl' 'pkg/arvo/app pkg/arvo/lib pkg/arvo/gen pkg/arvo/ted pkg/base-dev pkg/landscape pkg/autoprop' 11 'tickless da+now literals outside sys (benign baseline)'
+
+exit $fail

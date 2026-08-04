@@ -1614,11 +1614,12 @@
       ?+    r.bam  (do-peek lyc pov vis bam)
           [%da @da]
         ?:  =(now +.r.bam)
-          ::  TODO
+          ::  in-event scries must carry the current tick; bare-dated
+          ::  reads at .now are rejected to surface stale callsites.
+          ::  (external peeks are upgraded to the idle tick in +peek)
           ::
           ~&  >>>  [%no-tick tick.gem lyc pov vis bam]
           ~
-          ::  (do-peek lyc pov vis bam)
         (do-peek lyc pov vis bam)
       ::
           [[%da @da] %ud @ud]
@@ -2064,6 +2065,12 @@
     ==
   ::
   ?~  hap  ~
+  ::  external peeks at the current date resolve at the idle tick,
+  ::  like %once; the in-event tick discipline applies only to
+  ::  scries made through a worklist's pinned rook
+  ::
+  =?  r.bam.u.hap  =(`cose`da+now r.bam.u.hap)
+    [da+now ud+0]
   =/  pro  (~(peek le:part [pit vil] sol) lyc / [vis bam]:u.hap)
   ?:  |(?=(~ pro) ?=(~ u.pro))  ~
   =/  dat=(cask)  [p q.q]:u.u.pro
