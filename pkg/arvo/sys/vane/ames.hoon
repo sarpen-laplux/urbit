@@ -3374,7 +3374,7 @@
       ?:  ?=(%19 -.old)
         ~>  %slog.0^leaf/"ames: retrieving sponsorship chain"
         =.  moz
-          =+  ev-core=(ev:ames:adult-core [now eny rof] [/saxo]~ ames-state)
+          =+  ev-core=(ev:ames:adult-core [now tick eny rof] [/saxo]~ ames-state)
           ^-  (list move)
           [unix-duct.+.old %give %saxo get-sponsors:ev-core]^moz
         $(cached-state `20+(state-19-to-20 +.old))
@@ -9169,7 +9169,7 @@
         =*  syd  q.bem
         =*  lot=coin  $/r.bem
         =*  tyl  s.bem
-        =+  ev-core=(ev [now eny rof] [//scry]~ ames-state)
+        =+  ev-core=(ev [now tick eny rof] [//scry]~ ames-state)
         ::
         ?:  ?&  =(&+our why)
                 =([%ud 1] r.bem)
@@ -12239,7 +12239,7 @@
           ++  regress-flows
             |=  [her=^ship fren=fren-state state=axle]
             ^-  (quip move axle)
-            =+  event-core=(ev:ames now^eny^rof hen state)
+            =+  event-core=(ev:ames now^tick^eny^rof hen state)
             =/  peer=peer-state  (got-peer-state:event-core her)
             =+  peer-core=(abed-peer:pe:event-core her peer)
             =;  core=_peer-core
@@ -12383,7 +12383,7 @@
           ++  regress-peeks
             |=  [her=^ship fren=fren-state state=axle]
             ^-  (quip move axle)
-            =+  event-core=(ev:ames now^eny^rof hen state)
+            =+  event-core=(ev:ames now^tick^eny^rof hen state)
             =/  mesa-core  mesa(ames-state state)
             =;  core=_event-core
               abet:core
@@ -12563,7 +12563,7 @@
         ++  sy-rederive-mesa-keens
           |=  [=ship =peer-state =our=life =her=life new-key=symmetric-key]
           ^-  (quip move ^peer-state)
-          =+  event-core=(ev:ames now^eny^rof ~[//ames] ames-state)
+          =+  event-core=(ev:ames now^tick^eny^rof ~[//ames] ames-state)
           =;  core=_event-core
             =/  [moves=(list move) state=axle]  abet:core
             :-  moves
@@ -12648,7 +12648,7 @@
             ::  based on the chosen core in state; see find-peer
             ?:  ?=(%ames wer)
               :-  %ames
-              (gut-peer-state:(ev:ames now^eny^rof hen ames-state) ship)
+              (gut-peer-state:(ev:ames now^tick^eny^rof hen ames-state) ship)
             =/  chum-state  (~(get by chums.ames-state) ship)
             :-  %mesa
             ?.(?=([~ %known *] chum-state) *fren-state +.u.chum-state)
@@ -12696,7 +12696,7 @@
           ^+  sy-core
           ::  init event-core:ames
           ::
-          =/  ames-core  (ev:ames now^eny^rof hen ames-state)
+          =/  ames-core  (ev:ames now^tick^eny^rof hen ames-state)
           ::  if we're a comet, send self-attestation packet first
           ::
           =?  ames-core  =(%pawn (clan:title our))
@@ -13726,7 +13726,7 @@
           ames-state:(sy-rege:sy `her dry=%.n)
         =/  ahoy-state=axle
           ~|  migrate-crashed/her
-          =+  event-core=(ev:ames now^eny^rof ~[//rege] rege-state)
+          =+  event-core=(ev:ames now^tick^eny^rof ~[//rege] rege-state)
           =/  peer=peer-state  (got-peer-state:event-core her)
           ames-state:on-migrate:(abed-peer:pe:event-core her peer)
         ::  XX  compare pre/post migrated states
@@ -13945,7 +13945,7 @@
           [~ %known *]
         =^  moves-ahoy  ames-state
           =<  abet
-          %.([lane shot] on-ack-ahoy:(ev:am-core now^eny^rof hen ames-state))
+          %.([lane shot] on-ack-ahoy:(ev:am-core now^tick^eny^rof hen ames-state))
         ?:  ?=(^ moves-ahoy)
           [moves-ahoy vane-gate]
         =^  moves-peer  vane-gate

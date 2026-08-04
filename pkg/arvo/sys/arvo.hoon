@@ -1450,6 +1450,7 @@
     ++  jump
       |=  =debt
       ^+  this
+      ~&  %jump-enter
       =:  run  run.debt
           out  out.debt
         ==
@@ -1459,7 +1460,9 @@
         |=(=plan tick.p.plan)
       ::  apply remaining update
       ::
+      ~&  %jump-tic-ok
       =.  ..this  (~(lod what:pith fil.debt) kel.debt)
+      ~&  %jump-lod-ok
       ::  re-pin restored worklists to the new kernel's namespace:
       ::  their scry handlers were captured against the pre-upgrade
       ::  vane cores (or bunted, for pre-tick kernels), and +loop
@@ -1469,6 +1472,7 @@
       =:  hed.run  (turn hed.run pin)
           tal.run  (turn tal.run pin)
         ==
+      ~&  %jump-pin-ok
       ::  send upgrade notifications, ahead of restored worklists:
       ::  vanes must learn of the upgrade before in-flight moves
       ::  resume against their new cores
@@ -2026,6 +2030,7 @@
   ^-  ^
   ~|  %load
   ~>  %spin.['load/arvo']
+  ~&  %load-enter
   ::  store persistent state
   ::
   =.  sol
@@ -2035,6 +2040,7 @@
     ==
   ::  clear compiler caches
   ::
+  ~&  %load-sol-ok
   =.  van.mod  (~(run by van.mod) |=(=vane vane(worm *worm)))
   ::
   %-  %+  need:wyrd  kel.ver.zen
@@ -2046,11 +2052,13 @@
       ==
   ::  restore working state and resume
   ::
+  ~&  %load-wyrd-ok
   =/  det=debt
     ?-  -.hir
       ?(%240 %239 %238 %237 %236 %235 %234)  (next-debt:a234 debt.hir)
       %233                                   debt.hir
     ==
+  ~&  %load-det-ok
   =/  zef=(each (pair (list ovum) soul) (trap ^))
     loop:(~(jump le:part [pit vil] sol) det)
   ?-  -.zef
