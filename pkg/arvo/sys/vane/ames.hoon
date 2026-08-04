@@ -3410,7 +3410,12 @@
             moz
           ^-  (list move)
           :+  [[/ames]~ %pass /public-keys %j %public-keys [n=our ~ ~]]
-            [[/ames]~ %pass /stir %a %stir '']
+            ::  defer the timer reconciliation to a fresh event: under
+            ::  breadth-first move order a same-event %stir scries behn
+            ::  through a rook pinned before the migration's own
+            ::  %b %wait siblings landed, and would re-arm them all
+            ::
+            [[/ames]~ %pass /stir %b %wait now]
           moz
         ==
       ?:  ?=(%27 -.old)
@@ -5936,6 +5941,14 @@
             ?:  ?=([~ %known *] ship-state)
               event-core
             (request-attestation u.ship)
+          ::
+          ?:  ?=([%stir ~] wire)
+            ::  deferred from the larval migration (see +molt): run the
+            ::  timer reconciliation now that behn's state is visible
+            ::
+            %-  ?~  error  same
+                (slog 'ames: stir timer failed' u.error)
+            (emit duct %pass /stir %a %stir '')
           ::
           ?:  ?=([%dead-flow ~] wire)
             =?  event-core  ?=(^ unix-duct)
@@ -13680,7 +13693,7 @@
                   ~
                 =/  sax
                   %^  rof  [~ ~]  /ames
-                  j/`beam`[[our %saxo %da now] /(scot %p u.who)]
+                  j/`bema`[[our %saxo da+now ud+tick] /(scot %p u.who)]
                 =/  gal=(unit @p)
                   ?.  ?=([~ ~ *] sax)
                     ~

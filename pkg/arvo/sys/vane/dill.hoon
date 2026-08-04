@@ -116,7 +116,7 @@
       ::
       ++  crud
         |=  [err=@tas tac=tang]
-        =-  +>.$(moz (weld - moz))
+        =-  +>.$(moz (weld (flop -) moz))
         %+  turn
           ~(tap in ear.all)
         (late %give %logs %crud err tac)
@@ -128,7 +128,7 @@
       ::
       ++  done                                          ::  gift to viewers
         |=  git=gift
-        =-  +>.$(moz (weld - moz))
+        =-  +>.$(moz (weld (flop -) moz))
         %+  turn
           ~(tap in (~(get ju eye.all) ses))
         |=(=duct [duct %give git])

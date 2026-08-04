@@ -88,6 +88,12 @@
     ?-  -.task
       %born  this(next-wake.state ~, unix-duct.state duct)
       %drip  (drip p.task)
+      ::  NB: under breadth-first move order %huck defers past the
+      ::  IMMEDIATE handlers of the sender's sibling moves, not past
+      ::  their cascades.  gall's +ap-kill-down depends on exactly
+      ::  that one level of margin; do not use %huck expecting
+      ::  subtree deferral -- use %wait for a next-event guarantee.
+      ::
       %huck  (emit [duct %give %heck syn.task])
       %rest  this(timers.state (unset-timer [p.task duct]))
       %trim  this

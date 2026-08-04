@@ -1322,12 +1322,7 @@
   ++  emil
     |=  mof=(list move)
     %_(+> mow (weld (flop mof) mow))
-  ::
-  ::  Queue a list of moves, to be emitted before the rest
-  ::
-  ++  lime
-    |=  mof=(list move)
-    %_(+> mow (weld mow (flop mof)))
+
   ::
   ::  Set timer.
   ::
@@ -2122,10 +2117,18 @@
       ?>  =(~ pud)
       =.  pud  `[syd yoki]
       |^
+      ::  emission order matters: /what swaps the kernel and aborts the
+      ::  loop, so %zeal and %pork survive into the restored worklist
+      ::  and run on the NEW kernel.  %zeal's +goad then emits %g %load
+      ::  with post-upgrade agent cores (under depth-first, %zeal ran
+      ::  entirely pre-swap; under breadth-first that would deliver
+      ::  old-kernel-compiled cores to the new gall), and non-essential
+      ::  desks are held before %pork re-parks %base
+      ::
+      =.  ..park  (pass-what files)
       =.  ..park
         %-  emit  suspend-non-essentials
-      %.  [hen %slip %c %pork ~]
-      emit:(pass-what files)
+      (emit [hen %slip %c %pork ~])
       ::
       ++  files
         ^-  (list (pair path (cask)))
@@ -4441,8 +4444,12 @@
   ::  [goad] Must be called any time the set of running agents changes.
   ::  This is whenever an agent is started, stopped, or updated.
   ::
-  ::  This is not move-order agnostic -- you must be careful of
-  ::  reentrancy as long as arvo's move order is depth-first.
+  ::  Under breadth-first move order the %g %load this emits cannot
+  ::  re-enter clay before clay's remaining sibling moves are
+  ::  delivered, so goad needs no reentrancy care.  What remains:
+  ::  goad must be called only while clay is in a fully-consistent
+  ::  state, and must not be emitted from a worklist that will be
+  ::  drained across a /what kernel swap (see +sys-update).
   ::
   ::  [tare] >
   ::

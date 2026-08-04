@@ -1460,11 +1460,26 @@
       ::  apply remaining update
       ::
       =.  ..this  (~(lod what:pith fil.debt) kel.debt)
-      ::  send upgrade notifications
+      ::  re-pin restored worklists to the new kernel's namespace:
+      ::  their scry handlers were captured against the pre-upgrade
+      ::  vane cores (or bunted, for pre-tick kernels), and +loop
+      ::  only re-pins tick-0 plans
+      ::
+      =/  pin  |=(=plan plan(say.p peek(tick.gem tick.p.plan)))
+      =:  hed.run  (turn hed.run pin)
+          tal.run  (turn tal.run pin)
+        ==
+      ::  send upgrade notifications, ahead of restored worklists:
+      ::  vanes must learn of the upgrade before in-flight moves
+      ::  resume against their new cores
       ::
       =+  [wir car]=[/arvo vega/~]
       =.  ..this  (xeno:pith $/wir car)
-      (prep `plan`[[%$ ~ *@ud *rook] (spam:pith wir !>(car))])
+      =.  tic  +(tic)
+      =/  veg=plan
+        :-  [%$ ~ tic peek(tick.gem tic)]
+        (spam:pith wir !>(car))
+      this(hed.run [veg hed.run])
     ::  +prep: prepare a plan for +emit
     ::
     ++  prep
@@ -1490,8 +1505,6 @@
         loop(hed.run t.hed.run, neb 15)
       =.  dud  ~
       =.  gem  p.i.hed.run
-      =?  say.gem  =(0 tick.gem)
-        peek
       =^  mov=move  q.i.hed.run  ?>  ?=(^ q.i.hed.run)  q.i.hed.run
       loop:(step mov)
     ::  +step: advance the loop one step by routing a move

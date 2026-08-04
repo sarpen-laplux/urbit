@@ -311,11 +311,24 @@
       ::
       =.  moz
         %+  weld  moz
-        ::  order is crucial!
+        ::  NB: this literal is welded onto the tail of .moz, which
+        ::  +abet flops, so the EMITTED order is the reverse of the
+        ::  source order below: %a, %c, %g, %d, %e.
         ::
-        ::    %dill must init after %gall
-        ::    the %give init (for unix) must be after %dill init
-        ::    %jael init must be deferred (makes http requests)
+        ::  as of this writing the five inits are mutually
+        ::  independent: %c, %g, and %e emit no moves; %a subscribes
+        ::  to %j (whose state is already final, and pinned into this
+        ::  worklist's scry handler); %d passes %c a %warp on %base
+        ::  that needs nothing from clay's own %init.  under
+        ::  breadth-first move order all five are delivered before
+        ::  any of their consequences, so no ordering constraint can
+        ::  exist unless one init starts writing state another reads
+        ::  in its immediate handler.  if you add such a dependency,
+        ::  encode it here.
+        ::
+        ::  %jael's own init stays deferred: the %azimuth %watch poke
+        ::  (which makes http requests) is emitted last and lands in
+        ::  gall's blocked queue until %azimuth is running.
         ::
         ^-  (list move)
         :~  [hen %slip %e %init ~]
@@ -358,6 +371,10 @@
       ::
       =.  moz
         %+  weld  moz
+        ::  see the ordering note in +boot above: emitted order is
+        ::  the reverse of this literal, and the inits are mutually
+        ::  independent
+        ::
         ^-  (list move)
         :~  [hen %slip %e %init ~]
             [hen %slip %d %init ~]
@@ -679,7 +696,18 @@
   ::
   ++  public-keys-give
     |=  [yen=(set duct) =public-keys-result]
-    =/  yez  ~(tap in yen)
+    ::  deliver to gall-the-vane before gall agents: both classes
+    ::  land at the same breadth-first level, so without this
+    ::  partition an agent could react to a breach before gall has
+    ::  processed it on /sys/era.  (the rest of the old depth-first
+    ::  sorter -- ames before clay before gall -- is subsumed by
+    ::  breadth-first order itself: every recipient's reaction lands
+    ::  a level below every notification.)
+    ::
+    =/  yez
+      =/  yaz  %+  skid  ~(tap in yen)
+        |=(d=duct ?=([[%gall %sys *] *] d))
+      (weld p.yaz q.yaz)
     |-  ^+  this-su
     ?~  yez  this-su
     =*  d  i.yez
