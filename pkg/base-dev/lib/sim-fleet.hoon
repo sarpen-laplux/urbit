@@ -1,10 +1,16 @@
 ::  sim-fleet: multi-ship world state and actions over sim-io
 ::
-::    XX WIP: builds standalone but the spawn action has an open
-::    nest-fail against (pair yild-nil world) when driven from the
-::    test (tests/wip/fleet.hoon); bisect the ship-sim :* row types
-::    (suspects: the one-arm $% handle vs malt's raw product, and
-::    the vase face on kor).
+::    XX WIP: nest-fail when driven from tests/wip/fleet.hoon.
+::    The trace reads need=<gate taking world> have=[[%done ~] world]
+::    -- an action's *product* supplied where a form (gate) is
+::    wanted.  Actions are now cast ^- form:m / ^- form:ml (strandio
+::    idiom), so the next step is a dojo bisect:
+::      =sf -build-file %/lib/sim-fleet/hoon
+::      !>((spawn:sf ~zod !>(0)))        :: is this a gate?
+::      !>(((spawn:sf ~zod !>(0)) *world:sf))
+::    Suspect the two adjacent top-level |% cores (types core is not
+::    in the actions core's subject via =>, yet `world` resolves --
+::    verify what subject `form:m` closes over).
 ::
 ::
 ::    each ship is a kernel vase (anything with a +poke arm shaped
@@ -41,9 +47,10 @@
 ::
 +$  drive  $%([%behn ev=uv-event] [%term ev=uv-event] [%belt bet=*])
 --
-::
 |%
 ++  sm  (sio:sim-io world)
+++  m   (thread-form:sm ,~)
+++  ml  (thread-form:sm (list uv-effect))
 ::  +poke-kernel: slam the kernel's formal +poke (aqua's pattern)
 ::
 ++  poke-kernel
@@ -104,8 +111,8 @@
 ::
 ++  spawn
   |=  [who=ship kor=vase]
+  ^-  form:m
   |=  wol=world
-  ^-  (pair yild-nil world)
   =/  sim=ship-sim
     :*  kor
         nex=2
@@ -124,8 +131,8 @@
 ::
 ++  inject
   |=  [who=ship dev=drive]
+  ^-  form:m
   |=  wol=world
-  ^-  (pair yild-nil world)
   =/  sim  (~(got by fleet.wol) who)
   =/  r=[fx=(list uv-effect) ova=(list sim-ovum) *]
     ?-  -.dev
@@ -154,8 +161,8 @@
 ::
 ++  warp
   |=  dt=@dr
+  ^-  form:m
   |=  wol=world
-  ^-  (pair yild-nil world)
   =/  end  (add wen.wol dt)
   |-
   ::  earliest due timer across the fleet
@@ -181,11 +188,8 @@
 ::
 ++  logs
   |=  who=ship
+  ^-  form:ml
   |=  wol=world
-  ^-  (pair [%done p=(list uv-effect)] world)
   :_  wol
   [%done (murn log.wol |=([w=ship f=uv-effect] ?:(=(w who) `f ~)))]
-::  +yild-nil: the ~-typed yield shape for face-free actions
-::
-++  yild-nil  $%([%done p=~] [%fail p=tang])
 --

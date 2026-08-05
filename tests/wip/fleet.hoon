@@ -20,7 +20,7 @@
       --
 |%
 ++  test-fleet-echo
-  =/  m  (thread-form:sm:sim-fleet ,(list uv-effect))
+  =/  m  ml:sim-fleet
   =/  =form:m
     ;<  ~  bind:m  (spawn:sim-fleet ~zod mock)
     ;<  ~  bind:m  (inject:sim-fleet ~zod [%belt [%txt (tuba "hi")]])
@@ -33,7 +33,7 @@
 ::  +test-fleet-warp: behn doze then warp fires the timer
 ::
 ++  test-fleet-warp
-  =/  m  (thread-form:sm:sim-fleet ,(list uv-effect))
+  =/  m  ml:sim-fleet
   =/  =form:m
     ;<  ~  bind:m  (spawn:sim-fleet ~zod mock)
     ;<  ~  bind:m  (inject:sim-fleet ~zod [%behn [%news /behn/0v0 %done ~]])
