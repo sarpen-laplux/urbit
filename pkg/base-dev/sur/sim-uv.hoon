@@ -59,5 +59,17 @@
       ::  u3l_log
       ::
       [%slog =tape]
+      ::  rendered terminal line (replaces tty writes; _term_it_*)
+      ::
+      [%write =cord]
+      ::  %sag / %sav blits — write a file
+      ::
+      [%save =path dat=octs]
+      ::  %url blit — open a browser
+      ::
+      [%browse url=@t]
+      ::  u3_pier_exit (%logo)
+      ::
+      [%pier-exit ~]
   ==
 --
