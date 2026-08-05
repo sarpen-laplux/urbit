@@ -5,6 +5,135 @@ hoon, drive them with a combined strandio+state monad, and run whole-fleet
 tests as pure computations — libuv events in, libuv effects out — checkable
 inside a ship, or from a bare C test binary against a modified ivory pill.
 
+---
+
+# STATUS (updated after the P1/P2 work; read this first)
+
+Branch `bfmo/develop-port` in **`~/PLAN/urbit-bfmo`** (renamed from
+`vere-bfmo`; it is a git worktree of `~/PLAN/urbit`). Pushed to
+`git@github.com:sarpen-laplux/urbit.git`. Companion C worktree is
+**`~/PLAN/vere-bfmo`** (branch `bfmo/harness`, off urbit/vere
+`origin/develop`) — see "Runtime" below. Do not touch branch `sl/cba`;
+it is the user's, unrelated to this work.
+
+## Done
+
+- **`sur/sim-uv.hoon`** — the uv boundary vocabulary. `$uv-event`
+  (%talk/%timer-fire/%news/%exit), `$uv-effect` (%timer-start/-stop,
+  %close, %bail, %slog, %write, %save, %browse, %pier-exit), `$hid`,
+  `$bail-mote` (%dire vs %soft, mirroring `_behn_bail_dire`).
+- **`lib/sim-io.hoon`** — the `sio` monad builder, lia-shaped:
+  `(sio state-mold)` then `(thread-form:sm result-mold)`; state threads
+  through form application, `%done`/`%fail` yields only. Arms: `pure`,
+  `fail`, `bind`, **`pin`** (the rune-free `;^`: continuation sample is
+  `[result state]`), `get`, `put`, `jab`, `lift-eng`. Cross-mold shapes
+  are top-level builders `sio-yild` / `sio-form` — they must NOT be
+  door arms, a spec position rejects `limb:(call)`.
+- **`lib/sim-behn.hoon`** — `behn.c` ported field-for-field, every arm
+  citing its C origin. Covers the doze lifecycle, `_behn_time_cb`'s
+  ten-minute backstop, the born/wake retry ladders, `%exit` close.
+- **`lib/sim-term.hoon`** — `term.c`'s semantic layer: belts in, blits
+  applied to a cursor/line/transcript screen model, %write/%save/
+  %browse/%pier-exit out. The raw escape/utf8 parser is deliberately
+  unmodeled (input enters at `$belt`, where vere hands it to arvo).
+- **Tests, all green in-ship** (`-test %/tests/sim`): behn 9, term 7,
+  including one exercising the `sio` monad end to end.
+- **A real BFMO bug found and fixed in passing**: `app/lens.hoon`
+  unconditionally `%leave`d dojo on the first sole fact. Under BF,
+  dojo's prompt fact (emitted in `on-watch`) arrives before the command
+  poke's output, so the result was orphaned and every later HTTP dojo
+  request 500'd on the stuck `job.state`. Fixed order-tolerantly
+  (leave only once `take-sole-effect` served a response) — the model
+  fix for the poke-ack/fan-out class in `doc/bfmo-audit.md`.
+
+## In progress — the one thing to pick up first
+
+**`lib/sim-fleet.hoon` has an unresolved nest-fail.** The library builds;
+the driver test does not. Test is quarantined at `tests/wip/fleet.hoon`
+(move it back to `tests/sim/` when fixed) so the suite stays green.
+
+The trace reads `need = <gate taking world>`, `have = [[%done ~] world]`
+— i.e. an action's *product* is reaching a position that wants the
+action itself. Actions are already cast `^- form:m` / `^- form:ml`
+(strandio idiom); `run-driver-res` arity is already fixed. Next step is
+a dojo bisect (~60s per round, see Workflow below):
+
+```
+=sf -build-file %/lib/sim-fleet/hoon
+!>((spawn:sf ~zod !>(0)))              :: gate, or already a product?
+!>(((spawn:sf ~zod !>(0)) *world:sf))
+```
+
+Ruled out already: the two adjacent top-level `|%` cores parse fine
+(inserting `=>` between them only breaks the terminator). Remaining
+suspects: (a) the `^-` cast binding to the wrong gate in `spawn`;
+(b) `form:m` closing over a subject the call site does not share,
+since `m`/`ml` are computed in the second core.
+
+What `sim-fleet` already contains and is worth keeping: `$world`
+(fleet map, clock, effect log), `$ship-sim` (kernel vase + per-driver
+states + the uv-side `uvh` handle table), the kernel `+poke` slam loop
+(aqua's pattern, so a mock kernel works in unit tests before ivory-dev
+exists), arvo-effect routing by wire head, `+warp` firing due timers in
+date order across the fleet, and `+logs` for per-ship assertions.
+
+## Not started
+
+- ames/mesa engine (the big P2 item), two-ship routing, `-ph-hi` port.
+- P3 `;^` rune (spec below unchanged; `pin` is the working fallback —
+  write everything with `pin` first, the rune is pure sugar over it).
+- P4 ivory-dev pill + `sim_tests.c` + zig test step.
+- P5 corpus port.
+
+## Runtime / harness (this did not exist when the plan was written)
+
+- **`~/PLAN/vere-bfmo`**, branch `bfmo/harness` off urbit/vere develop,
+  three commits: two genuine upstream bug fixes (boot-time tank-trace
+  rendering; the malformed speculative `wynn` in `_mars_wyrd_card`
+  that caused `arvo: bad wisp`, plus serf-side goof printing) and one
+  `XX BFMO` commit declaring the decremented kelvin stack
+  (zuse 407 / lull 319 / arvo 233). **Not built yet** — needs
+  `git lfs pull` (two generated `.c` files are LFS pointers) then
+  `zig build -Doptimize=ReleaseFast`, ~10 min.
+- The currently-working binary is `~/PLAN/vere/zig-out/aarch64-macos-none/urbit`
+  (same patches, older base). The harness scripts point at it.
+- **`~/PLAN/bfmo-piers/`**: `boot.sh` (fresh fake-ship boot + smoke),
+  `ota.sh` (live upgrade driver), **`ptydrive.py`** (drives dojo over a
+  pty; `SLEEP:n` pseudo-command interleaves background curls).
+  `port-pier` is a booted BFMO ship; `base-pier` a develop baseline.
+
+## Workflow that makes this fast
+
+Do NOT reboot to test hoon changes. Userspace edits go:
+
+```
+rsync -L pkg/base-dev/lib/<file>.hoon ~/PLAN/bfmo-piers/port-pier/base/lib/
+python3 ~/PLAN/bfmo-piers/ptydrive.py ~/PLAN/bfmo-piers/port-pier \
+  '|commit %base' 'SLEEP:25' '-test %/tests/sim' 'SLEEP:45'
+grep -aE 'FAILED|OK  |nest|-find|syntax' ~/PLAN/bfmo-piers/pty-session.log | tail
+```
+
+~60s per round vs ~4 min for a reboot. Kill stale ships first
+(`pkill -f 'urbit.*port-pier'`); a stale `.vere.lock` blocks restart.
+Note `tests/` is copied into `pkg/arvo/tests/` for the desk (untracked);
+keep `tests/sim/*` and `pkg/arvo/tests/sim/*` in sync, and new libs need
+a symlink in `pkg/arvo/lib/` (`ln -sf ../../base-dev/lib/X.hoon X.hoon`).
+
+## Hoon error classes already hit (save yourself the round trip)
+
+- `limb:(wet-call)` in a **spec** position → `syntax error`. Hoist to a
+  top-level mold builder (`++ sio-form |* a=mold $-(...)`).
+- `/+` before `/-` → `syntax error` at the ford line. `/-` first.
+- `res` is a **type** in the engines, not a face: write `fx.r`, not
+  `fx.res.r`.
+- Date arithmetic loses its aura: `` `@dr`(sub a b) `` or you get
+  `-need.@dr -have.@ud`.
+- `[%txt "hi" ~]` is not a `$belt`: use `[%txt (tuba "hi")]`.
+- Passing `[fx ova]:r` to a `|= [fx=... ova=...]` gate supplies one
+  argument, not two.
+
+---
+
 ## Study targets (read these first, in this order)
 
 1. `pkg/base-dev/sur/wasm/lia.hoon` + `pkg/base-dev/lib/wasm/lia.hoon` —
@@ -234,6 +363,11 @@ Acceptance for the whole effort:
 
 ## Phasing
 
+(Status per phase is in the STATUS section at the top of this file;
+P1 is done, P2 is partly done. File names landed slightly flatter than
+sketched below: `sur/sim-uv.hoon`, `lib/sim-io.hoon`, `lib/sim-behn.hoon`,
+`lib/sim-term.hoon`, `lib/sim-fleet.hoon`.)
+
 - P1: study + write `sur/sim/uv.hoon` vocabulary + behn engine (smallest
   driver) + the `sio` builder + `pin` helper. Unit-test behn engine
   round-trip in-ship.
@@ -248,10 +382,18 @@ Acceptance for the whole effort:
   suite catches; keep the BFMO-specific tests from bfmo-audit.md's
   testing-debt list in this framework.
 
-Open questions to resolve early (flag, don't guess silently): exact
-`$uv-event`/`$uv-effect` granularity (1:1 with libuv, or with vere's
-io-driver callbacks — recommend the latter: vere's callbacks are already
-the semantic layer, libuv-raw adds noise); whether `kor` holds full arvo
-or per-vane cores (start with full arvo formal interface: poke/peek/wish
-— it exercises BFMO's actual loop, which is the point); how `now`
-interacts with per-ship clocks under `warp` (single global clock first).
+Open questions — now decided in code, recorded here:
+
+- **Granularity**: vere's io-driver callbacks, not raw libuv. Settled;
+  `$uv-event`/`$uv-effect` in `sur/sim-uv.hoon` are at the callback
+  level and each cites its C origin.
+- **`kor`**: full arvo formal interface. `+poke-kernel` slams the
+  `+poke` arm, so anything with arvo's shape works — a mock core for
+  unit tests today, real arvo from the ivory-dev wish later. This is
+  what makes the harness exercise BFMO's actual move loop.
+- **Clock**: single global clock in `world`, advanced by `+warp`, which
+  fires due timers across the whole fleet in date order. Settled.
+
+Still open: whether `+warp` should also drain any non-timer pending
+work before returning; whether the fleet needs per-ship clock skew for
+network-partition tests (not needed for `-ph-hi`).
